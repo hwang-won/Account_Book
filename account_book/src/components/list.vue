@@ -1,23 +1,24 @@
 <template>
     <div>
-        <h1>수입 및 지출 내역</h1>
+        <h1>list</h1>
         <div>
             <!-- 카테고리 선택 -->
-            <label for="category-filter">카테고리:</label>
-            <select id="category-filter" v-model="categoryFilter">
+            <label for="category">카테고리:</label>
+            <select id="category" v-model="categoryFilter">
                 <option value="">전체</option>
                 <option v-for="category in categories" :key="category">{{ category }}</option>
             </select>
             
             <!-- 수입/지출 선택 -->
-            <label for="type-filter">수입/지출:</label>
-            <select id="type-filter" v-model="typeFilter">
+            <label for="type">수입/지출:</label>
+            <select id="type" v-model="typeFilter">
                 <option value="">전체</option>
                 <option value="수입">수입</option>
                 <option value="지출">지출</option>
             </select>
         </div>
 
+        <!-- 테이블 -->
         <table>
             <thead>
                 <tr>
@@ -28,8 +29,9 @@
                     <th>메모</th>
                 </tr>
             </thead>
+            <!-- for문으로 값 넣기 -->
             <tbody>
-                <tr v-for="content in filterContents" :key="content.id" @click="goToDetailPage(content.id)">
+                <tr v-for="content in filterContents" :key="content.id" @click="detailPage(content)">
                     <td>{{ content.create_date }}</td>
                     <td>{{ content.category }}</td>
                     <td>{{ content.money }}</td>
@@ -77,38 +79,43 @@ export default {
             .then(plusRes => {
                 plusRes.data.forEach(item => {
                     item.type = '수입';
+                    item.jsonType = 'plus';
                     this.contents.push(item);
                 });
                 axios.get('http://localhost:3002/Minus')
                     .then(minusRes => {
                         minusRes.data.forEach(item => {
                             item.type = '지출';
+                            item.jsonType = 'minus';
                             this.contents.push(item);
                         });
-                        // 날짜 순으로 정렬하기
+                        // 날짜 순으로 정렬
                         this.contents.sort((a, b) => new Date(a.create_date) - new Date(b.create_date));
                     });
             });
     },
     methods: {
-        goToDetailPage(id) {
-            // 클릭한 행의 데이터를 상세 페이지로 전달하고, 해당 페이지로 이동
-            this.$router.push({ name: 'Detail', params: { id: id } });
+        detailPage(content) {
+            // 클릭한 행의 id, jsonType 데이터를 전달
+            this.$router.push({ 
+                name: 'Detail', 
+                params: { id: content.id, jsonType: content.jsonType } 
+            });
         }
     }
 };
 </script>
 
 <style>
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-th, td {
-    border: 1px solid #cfcfcf;
-    padding: 8px;
-}
-th {
-    background-color: #eeeeee;
-}
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        border: 1px solid #cfcfcf;
+        padding: 8px;
+    }
+    th {
+        background-color: #eeeeee;
+    }
 </style>
