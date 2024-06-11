@@ -24,7 +24,8 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <a :href="'/findpw'">비밀번호 찾기  |</a>
+                    <a :href="'/id_search'">ID 찾기 |</a>
+                    <a :href="'/password_search'"> PW 찾기 |</a>
                     <a :href="'/regi'">  회원 가입</a>
                 </td>
             </tr>
@@ -66,10 +67,10 @@ export default {
                         this.login_data = { user_id: user.user_id, password: user.password };
                         alert(user.user_id + "님 환영합니다");
 
-                        localStorage.setItem("login", JSON.stringify(this.login_data));
+                        localStorage.setItem("login_key", JSON.stringify(this.login_data));
 
                         // 메인페이지로 이동(추가)
-                        // this.$router.push('/bbslist');
+                        this.$router.push('/main');
 
                         // 입력폼 초기화
                         
@@ -79,6 +80,18 @@ export default {
                 })
                 .catch(err => alert('오류가 발생했습니다: ' + err));
 
+        },
+        check_loginStatus() {
+            const value = localStorage.getItem('login_key'); 
+            if (value) {
+                console.log('LocalStorage에 값이 있습니다:', value);
+                this.$router.push('/main');
+
+            } else {
+                console.log('LocalStorage에 값이 없습니다.');
+                //this.$router.push('/');
+
+            }
         }
 
     }
