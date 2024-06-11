@@ -1,0 +1,73 @@
+{
+  "User": [
+    {
+      "user_id": "user_id1",
+      "password": "1111",
+      "name": "사용자",
+      "email": "user123@gmail.com",
+      "account": 10000
+    },
+    {
+      "id": "374f",
+      "user_id": "user_id2",
+      "password": "2222",
+      "name": "사용자2",
+      "email": "abc@mail.com",
+      "account": "100"
+    },
+    {
+      "id": "d865",
+      "user_id": "user_id3",
+      "password": "1111",
+      "name": "",
+      "email": "adf",
+      "account": "12"
+    },
+    {
+      "id": "fed6",
+      "user_id": "user_id4",
+      "password": "4444",
+      "name": "사용자4",
+      "email": "ㄴㅇㄹ",
+      "account": "1"
+    },
+    {
+      "id": "b5f1",
+      "user_id": "user_id5",
+      "password": "5555",
+      "name": "df",
+      "email": "sdf",
+      "account": "100"
+    },
+    {
+      "id": "83ba",
+      "user_id": "user_id6",
+      "password": "12",
+      "name": "서나연",
+      "email": "ㄴㅇㄹ",
+      "account": "11"
+    }
+  ],
+  "Plus": [
+    {
+      "id": "1",
+      "user_id": "user_id",
+      "money": 2000,
+      "create_date": "2015-11-30T15:00",
+      "update_date": "2015-11-30T15:00",
+      "category": "은행이자",
+      "memo": "예금 이자가 들어왔다."
+    }
+  ],
+  "Minus": [
+    {
+      "id": "1",
+      "user_id": "user_id",
+      "money": 8000,
+      "create_date": "2017-11-30T15:00",
+      "update_date": "2019-12-11T17:00",
+      "category": "공과금",
+      "memo": "전기세 많이 나왔으니 절약"
+    }
+  ]
+}
