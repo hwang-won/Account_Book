@@ -89,8 +89,6 @@ export default {
                             item.jsonType = 'minus';
                             this.contents.push(item);
                         });
-                        // 날짜 순으로 정렬
-                        this.contents.sort((a, b) => new Date(a.create_date) - new Date(b.create_date));
                     });
             });
     },
