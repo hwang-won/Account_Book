@@ -29,7 +29,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="content in filterContents" :key="content.id">
+                <tr v-for="content in filterContents" :key="content.id" @click="goToDetailPage(content.id)">
                     <td>{{ content.create_date }}</td>
                     <td>{{ content.category }}</td>
                     <td>{{ content.money }}</td>
@@ -78,8 +78,7 @@ export default {
                 plusRes.data.forEach(item => {
                     item.type = '수입';
                     this.contents.push(item);
-                }
-            );
+                });
                 axios.get('http://localhost:3002/Minus')
                     .then(minusRes => {
                         minusRes.data.forEach(item => {
@@ -88,11 +87,15 @@ export default {
                         });
                         // 날짜 순으로 정렬하기
                         this.contents.sort((a, b) => new Date(a.create_date) - new Date(b.create_date));
-                    }
-                );
-            }
-        );
+                    });
+            });
     },
+    methods: {
+        goToDetailPage(id) {
+            // 클릭한 행의 데이터를 상세 페이지로 전달하고, 해당 페이지로 이동
+            this.$router.push({ name: 'Detail', params: { id: id } });
+        }
+    }
 };
 </script>
 
