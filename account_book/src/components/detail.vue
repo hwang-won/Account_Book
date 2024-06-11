@@ -75,22 +75,24 @@ export default {
         }
     },
 
-    created(){
-        this.isUpdate = false;
-        this.id = "1";
-        this.user = "user_id"
-    },
+    // created(){
+    //     this.isUpdate = false;
+    //     this.id = $route.params.id;
+    //     this.isPlus = $route.params.jsonType;
+    // },
 
     mounted(){
-        this.getDetail();
+        this.id = $route.params.id;
+        this.isPlus = $route.params.jsonType;
         this.isUpdate = false;
+        this.getDetail();
     },
 
     methods: {
 
         getDetail(){
             let url = "http://localhost:3001/" + this.isPlus
-            let params = {"user_id" : this.user_id, "id" : this.id}
+            let params = {"id" : this.id}
             axios.get(url,{params})
                 .then((response) => {
 
@@ -125,7 +127,6 @@ export default {
             axios.put(url, params)
                 .then((response) =>{
                     alert("변경 완료");
-                    this.user_id = response.data.user_id
                     this.money = response.data.money
                     this.update_date = response.data.update_date;
                     this.category = response.data.category;
@@ -139,11 +140,10 @@ export default {
         },
 
         setDelete(){
-            let url = "http://localhost:3001/" + this.isPlus;
-            let params = {"id" : this.id}
-            axios.delete(url, params)
+            let url = "http://localhost:3001/" + this.isPlus + "/" + this.id;
+            axios.delete(url, {})
                 .then((response) => {
-                    alert(response);
+                    alert("삭제완료");
                     this.$router.go(-1);
                 })
                 .catch((error) => {
