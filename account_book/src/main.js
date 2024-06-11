@@ -1,5 +1,7 @@
-import { createApp } from 'vue'
+import { createApp } from 'vue';
+import App from './App.vue';
+import Router from './routes/router';
 import './style.css'
-import App from './App.vue'
 
-createApp(App).mount('#app')
+
+createApp(App).use(Router).mount('#app');
