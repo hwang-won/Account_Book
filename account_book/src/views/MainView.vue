@@ -1,31 +1,21 @@
 <template>
-  <div>
-    <Header />
-    <Graph />
-    <bodyView/>
-  </div>
+    <div>
+        <Graph/>
+        <router-view/>
+    </div>
 </template>
+
 <script>
-import BodyView from "../components/BodyView.vue";
-import Graph from "../components/Graph.vue";
-import Header from "../components/Header.vue";
+import Graph from "@/components/chart/graph.vue"
+import Header from '@/components/header.vue';
+import Body from '@/components/body/body.vue';
 
 export default {
-  components: {
-    Graph,
-    Header,
-    BodyView,
-  },
-};
-</script>
-
-<style scoped>
-
-Header {
-  position: absolute;
-  top: 10px;
-  left:0;
-  right:0;
+    name: "mainView",
+    components:{Header, Body, Graph},
+    
 }
-
+</script>
+<style>
+    
 </style>

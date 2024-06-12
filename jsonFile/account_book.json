@@ -2,24 +2,50 @@
   "User": [
     {
       "user_id": "user_1",
-      "name": "user1",
-      "password": "password1",
-      "email": "n@n.n",
-      "account": 0
+      "password": "password",
+      "name": "사용자",
+      "email": "user123@gmail.com",
+      "account": 10000,
+      "id": "cb7b"
     },
     {
-      "user_id": "user_2",
-      "name": "user2",
-      "password": "password2",
-      "email": "n@n.n",
-      "account": 0
+      "id": "194c",
+      "user_id": "123",
+      "password": "123",
+      "name": "123",
+      "email": "123",
+      "account": "123"
+    },
+    {
+      "id": "c7bd",
+      "user_id": "1234",
+      "password": "1234",
+      "name": "1234",
+      "email": "1234",
+      "account": "1234"
+    },
+    {
+      "id": "77df",
+      "user_id": "12345",
+      "password": "12345",
+      "name": "12345",
+      "email": "12345",
+      "account": "12345"
+    },
+    {
+      "id": "3136",
+      "user_id": "11111",
+      "password": "11111",
+      "name": "11111",
+      "email": "11111",
+      "account": "11111"
     }
   ],
   "Plus": [
     {
       "id": 1,
       "user_id": "user_1",
-      "money": 2000,
+      "money": 15000,
       "create_date": "2024-11-30T24:00",
       "update_date": "2024-11-30T24:00",
       "category": "은행이자",

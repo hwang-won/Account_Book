@@ -1,17 +1,18 @@
 <template>
   <div id="app">
-    <router-view />
+    <Header/>
+      <router-view/>
   </div>
 </template>
 
 <script>
+import mainView from '@/views/mainView.vue';
+import Header from './components/header.vue';
 export default {
-  name: 'App'
-};
-</script>
-
-<style>
-#app {
-  text-align: center;
+  name : "App",
+  components : {mainView,Header}
 }
+</script>
+<style>
+  
 </style>

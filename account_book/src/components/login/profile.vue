@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>bodyView</h1>
+        profile
     </div>
 </template>
 
