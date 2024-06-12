@@ -13,7 +13,7 @@
             <tr>
                 <td>비밀번호</td>
                 <td>
-                    <input v-model="pw" placeholder="pw 입력" size="20"/>
+                    <input type=password v-model="pw" placeholder="pw 입력" size="20"/>
                 </td>
             </tr>
             <tr>
@@ -87,18 +87,22 @@ export default {
                 alert("모든 값을 입력해주세요.");
                 return;
             }
-            const newUser = { user_id: this.id, password: this.pw,
-                                name: this.name, email: this.email, 
-                                account: this.account };
+            const newUser = {
+                user_id: this.id, password: this.pw,
+                name: this.name, email: this.email,
+                account: this.account
+            };
             axios.post("http://localhost:3001/User", newUser)
                 .then(res => {
                     console.log("user 추가 완료")
 
                     this.form_init();
 
-
+                    alert("회원가입 완료")
                     // 로그인 페이지 이동
-                    //this.$router.push({ name:'login'});
+                    this.$router.push('/');
+
+
 
                 })
                 .catch(err => alert(err));
