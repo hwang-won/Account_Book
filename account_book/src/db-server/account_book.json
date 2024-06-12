@@ -16,36 +16,12 @@
       "account": "100"
     },
     {
-      "id": "d865",
-      "user_id": "user_id3",
+      "id": "0669",
+      "user_id": "test_id",
       "password": "1111",
-      "name": "",
-      "email": "adf",
-      "account": "12"
-    },
-    {
-      "id": "fed6",
-      "user_id": "user_id4",
-      "password": "4444",
-      "name": "사용자4",
-      "email": "ㄴㅇㄹ",
+      "name": "test",
+      "email": "abc",
       "account": "1"
-    },
-    {
-      "id": "b5f1",
-      "user_id": "user_id5",
-      "password": "5555",
-      "name": "df",
-      "email": "sdf",
-      "account": "100"
-    },
-    {
-      "id": "83ba",
-      "user_id": "user_id6",
-      "password": "12",
-      "name": "서나연",
-      "email": "ㄴㅇㄹ",
-      "account": "11"
     }
   ],
   "Plus": [
