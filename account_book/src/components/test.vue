@@ -82,40 +82,27 @@ export default {
                     item.jsonType = 'plus';
                     this.contents.push(item);
                 });
-                return axios.get('http://localhost:3001/Minus');
-            })
-            .then(minusRes => {
-                minusRes.data.forEach(item => {
-                    item.type = '지출';
-                    item.jsonType = 'minus';
-                    this.contents.push(item);
-                });
-                // 날짜 순 정렬
-                this.sortDate();
-            })
-            .catch(err => {
-                alert(err);
-            }
-        );
+                axios.get('http://localhost:3001/Minus')
+                    .then(minusRes => {
+                        minusRes.data.forEach(item => {
+                            item.type = '지출';
+                            item.jsonType = 'minus';
+                            this.contents.push(item);
+                        });
+                        // 날짜와 시간 기준 내림차순으로 정렬
+                        this.contents.sort((a, b) => new Date(b.create_date) - new Date(a.create_date));
+                    });
+            });
     },
     methods: {
-        // json 데이터를 날짜 순으로 정렬
-        sortDate() {
-            this.contents.sort((a, b) => {
-                let A = new Date(a.create_date.replace('T', ' '));
-                let B = new Date(b.create_date.replace('T', ' '));
-                return B - A;
-            });
-        },
-        // 클릭한 행의 id, jsonType 데이터를 전달
         detailPage(content) {
+            // 클릭한 행의 id, jsonType 데이터를 전달
             this.$router.push({ 
                 name: 'Detail', 
                 params: { id: content.id, jsonType: content.jsonType } 
-            }
-        );
+            });
+        }
     }
-}
 };
 </script>
 

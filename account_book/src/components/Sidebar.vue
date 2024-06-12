@@ -20,7 +20,7 @@
 <style>
 .sidebar {
     margin-top: 60px;
-    width: 250px;
+    width: 200px;
     position: fixed;
     left: 0;
     top: 0;
@@ -35,7 +35,7 @@
 }
 
 .menu li {
-    padding: 16px;
+    padding: 12px;
     margin: 10px;
     background-color: white;
     border-radius: 10px;
