@@ -1,15 +1,18 @@
 <template>
-  <div>
-    <Detail/>
+  <div id="app">
+    <header/>
+    <aside/>
+    <router-view/>
   </div>
 </template>
 
 <script>
-import Detail from "./components/detail.vue";
-
+import mainView from '@/views/mainView.vue';
+import aside from './components/aside.vue';
+import header from './components/header.vue';
 export default {
   name : "App",
-  components : {Detail}
+  components : {mainView, aside, header}
 }
 </script>
 <style>

@@ -53,7 +53,7 @@
 import axios from "axios"
 
 export default {
-    name: "Detail",
+    name: "detail",
     data(){
         return {
             // 상세 페이지 받아올 값들
@@ -71,7 +71,7 @@ export default {
             update_memo : "",
 
             isPlus: "Plus",     // 수출입 구분
-            isUpdate: false // 수정 전(false)/ 수정 후(false)
+            isUpdate: false // 수정 전(false) / 수정 후(false)
         }
     },
 
@@ -82,14 +82,14 @@ export default {
     // },
 
     mounted(){
-        this.id = $route.params.id;
-        this.isPlus = $route.params.jsonType;
+        this.id = this.$route.params.id;
+        this.isPlus = this.$route.params.jsonType;
         this.isUpdate = false;
+        console.log(this.$route.params);
         this.getDetail();
     },
 
     methods: {
-
         getDetail(){
             let url = "http://localhost:3001/" + this.isPlus
             let params = {"id" : this.id}
@@ -117,7 +117,7 @@ export default {
         setUpdate(){
             let url = "http://localhost:3001/" + this.isPlus + "/" + this.id;
             let params = {
-                "money" : this.update_money, 
+                "money" : this.update_money,
                 "category" : this.update_category, 
                 "memo" : this.update_memo,
                 "create_date" : this.create_date,

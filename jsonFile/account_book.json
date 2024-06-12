@@ -6,19 +6,33 @@
       "name": "사용자",
       "email": "user123@gmail.com",
       "account": 10000,
-      "id": "0b3e"
+      "id": "cb7b"
+    },
+    {
+      "id": "194c",
+      "user_id": "123",
+      "password": "123",
+      "name": "123",
+      "email": "123",
+      "account": "123"
+    },
+    {
+      "id": "c7bd",
+      "user_id": "1234",
+      "password": "1234",
+      "name": "1234",
+      "email": "1234",
+      "account": "1234"
+    },
+    {
+      "id": "77df",
+      "user_id": "12345",
+      "password": "12345",
+      "name": "12345",
+      "email": "12345",
+      "account": "12345"
     }
   ],
   "Plus": [],
-  "Minus": [
-    {
-      "id": "1",
-      "user_id": "user_id",
-      "money": 8000,
-      "create_date": "2017-11-30T15:00",
-      "update_date": "2019-12-11T17:00",
-      "category": "공과금",
-      "memo": "전기세 많이 나왔으니 절약"
-    }
-  ]
+  "Minus": []
 }
