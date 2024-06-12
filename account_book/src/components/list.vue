@@ -2,6 +2,12 @@
     <div>
         <h1>list</h1>
         <div>
+            <!-- 날짜선택 -->
+            <label for="startDate">시작일:</label>
+            <input type="date" id="startDate" v-model="startDate">
+            <label for="endDate">종료일:</label>
+            <input type="date" id="endDate" v-model="endDate">
+
             <!-- 카테고리 선택 -->
             <label for="category">카테고리:</label>
             <select id="category" v-model="categoryFilter">
@@ -52,6 +58,8 @@ export default {
             contents: [],
             categoryFilter: '',
             typeFilter: '',
+            startDate: '',
+            endDate: '',
         };
     },
     computed: {
@@ -65,6 +73,13 @@ export default {
                 // 수입/지출 필터링
                 if (this.typeFilter && content.type !== this.typeFilter) {
                     return false;
+                }
+                // 날짜 기간 필터링
+                if (this.startDate && this.endDate) {
+                    let startDate = new Date(this.startDate);
+                    let endDate = new Date(this.endDate);
+                    let contentDate = new Date(content.create_date.replace('T', ' '));
+                    return contentDate >= startDate && contentDate <= endDate;
                 }
                 return true;
             });
