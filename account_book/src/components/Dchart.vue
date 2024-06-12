@@ -88,11 +88,13 @@ export default {
 
 <style scoped>
 .chart-container {
+  position: relative;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 16px;
   text-align: center;
-  width: 300px;
+  height: auto;
+  width: 100%;
 }
 
 .chart-header {
@@ -104,7 +106,6 @@ export default {
   font-size: 14px;
   margin: 0;
   color: #666;
-  text-align: left;
 }
 
 .chart-total {
@@ -115,6 +116,6 @@ export default {
 
 #incomeChart {
   width: 100%;
-  height: 200px;
+  height: 100%;
 }
 </style>
