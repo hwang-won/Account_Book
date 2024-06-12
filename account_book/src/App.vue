@@ -1,20 +1,23 @@
 <template>
   <div id="app">
-    <Header/>
-      <router-view/>
-        <Toggle/>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import mainView from '@/views/mainView.vue';
-import Header from './components/header.vue';
-import Toggle from './components/body/addToggle.vue';
+import MainView from '@/views/mainView.vue';
+import LoginView from '@/views/loginView.vue';
 export default {
   name : "App",
-  components : {mainView,Header,Toggle}
+  components : {MainView, LoginView},
+  data(){
+    return{
+      tabs: ""
+    }
+  }
 }
 </script>
+
 <style>
-  
+
 </style>

@@ -1,4 +1,9 @@
 <template>
+<<<<<<< HEAD
+=======
+    <Header/>
+    <Aside/>
+>>>>>>> origin/feature/lee
     <div>
         <div>
             <table style="width: 500px;" border="1">
@@ -49,11 +54,13 @@
 </template>
 
 <script>
-
+import Header from "@/components/header.vue";
+import Aside from "@/components/aside.vue";
 import axios from "axios"
 
 export default {
-    name: "detail",
+    name: "Detail",
+    components:{Header, Aside},
     data(){
         return {
             // 상세 페이지 받아올 값들

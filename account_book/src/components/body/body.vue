@@ -1,12 +1,17 @@
 <template>
     <div>
-        <h3>body입니다</h3>
+        <Graph/>
+        <h3>바디입니다(최근 5개 리스트만 추가)</h3>
     </div>
 </template>
 
 <script>
+
+import Graph from "@/components/body/graph.vue"
+
 export default {
-    name: "body",
+    name: "Body",
+    components : {Graph}
 }
 </script>
 
