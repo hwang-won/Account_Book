@@ -43,7 +43,6 @@ export default {
         update_body(e){
             this.tabs = e;
         },
-        checking_bodt
     }
 }
 </script>
