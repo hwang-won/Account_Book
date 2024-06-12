@@ -1,5 +1,6 @@
 <template>
     <div>
+        <h1>Recent List</h1>
         <!-- 테이블 -->
         <table>
             <thead>
@@ -37,7 +38,7 @@ export default {
     computed: {
         // 최근 5개만
         recentContents() {
-            return this.contents.slice(0, 5);
+            return this.contents.slice(0, 5); 
         }
     },
     mounted() {
@@ -62,7 +63,7 @@ export default {
             .catch(err => {
                 alert(err);
             }
-            );
+        );
     },
     methods: {
         // json 데이터를 날짜 순으로 정렬
@@ -85,18 +86,15 @@ export default {
 </script>
 
 <style>
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-th,
-td {
-    border: 1px solid #cfcfcf;
-    padding: 8px;
-}
-
-th {
-    background-color: #eeeeee;
-}
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        border: 1px solid #cfcfcf;
+        padding: 8px;
+    }
+    th {
+        background-color: #eeeeee;
+    }
 </style>
