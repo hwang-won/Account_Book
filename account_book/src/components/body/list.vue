@@ -47,13 +47,17 @@
 import axios from 'axios';
 
 export default {
-    name : "list",
+    name : "List",
     data() {
         return {
+            user_id : JSON.parse(localStorage.getItem("loginKey")).user_id,
             contents: [],
             categoryFilter: '',
             typeFilter: '',
         };
+    },
+    created(){
+        this.user_id = JSON.parse(localStorage.getItem("loginKey")).user_id;
     },
     computed: {
         filterContents() {
@@ -66,6 +70,12 @@ export default {
                 if (this.typeFilter && content.type !== this.typeFilter) {
                     return false;
                 }
+
+                // 아이디 필터링
+                if (this.user_id != content.user_id){
+                    return false;
+                }
+                
                 return true;
             });
             return filtered;
@@ -97,7 +107,7 @@ export default {
         detailPage(content) {
             // 클릭한 행의 id, jsonType 데이터를 전달
             this.$router.push({ 
-                name: 'detail', 
+                name: 'Detail', 
                 params: { id: content.id, jsonType: content.jsonType } 
             });
         }

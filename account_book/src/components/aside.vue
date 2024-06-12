@@ -2,20 +2,42 @@
     <div class="sidebar">
         <ul class="menu">
             <li>
-                <router-link to="/body">Home</router-link>
+                <button @click="changeTab('Body')">Home</button>
             </li>
             <li>
-                <router-link to="/list">거래내역</router-link>
+                <button @click="changeTab('List')">거래내역</button>
             </li>
             <li>
-                <router-link to="/notice">공지사항</router-link>
+                <button @click="changeTab('Notice')">공지사항</button>
             </li>
             <li>
-                <router-link to="/client">고객문의</router-link>
+                <button @click="changeTab('Client')">고객문의</button>
             </li>
         </ul>
     </div>
 </template>
+
+<script>
+
+export default{
+    name: "Aside",
+    data(){
+       return{
+            tab:"Body"
+       } 
+    },
+    created(){
+        this.$emit("tab_value", this.tab)
+    },
+    methods:{
+        changeTab(name){
+            this.tab = name;
+            this.$emit("tab_value", this.tab)
+        }
+    }
+}
+
+</script>
 
 <style>
 .sidebar {
