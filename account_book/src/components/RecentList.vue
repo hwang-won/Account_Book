@@ -1,23 +1,5 @@
 <template>
     <div>
-        <h1>list</h1>
-        <div>
-            <!-- 카테고리 선택 -->
-            <label for="category">카테고리:</label>
-            <select id="category" v-model="categoryFilter">
-                <option value="">전체</option>
-                <option v-for="category in categories" :key="category">{{ category }}</option>
-            </select>
-            
-            <!-- 수입/지출 선택 -->
-            <label for="type">수입/지출:</label>
-            <select id="type" v-model="typeFilter">
-                <option value="">전체</option>
-                <option value="수입">수입</option>
-                <option value="지출">지출</option>
-            </select>
-        </div>
-
         <!-- 테이블 -->
         <table>
             <thead>
@@ -31,7 +13,7 @@
             </thead>
             <!-- for문으로 값 넣기 -->
             <tbody>
-                <tr v-for="content in filterContents" :key="content.id" @click="detailPage(content)">
+                <tr v-for="(content, index) in recentContents" :key="index" @click="detailPage(content)">
                     <td>{{ content.create_date }}</td>
                     <td>{{ content.category }}</td>
                     <td>{{ content.money }}</td>
@@ -50,30 +32,13 @@ export default {
     data() {
         return {
             contents: [],
-            categoryFilter: '',
-            typeFilter: '',
         };
     },
     computed: {
-        // 필터링
-        filterContents() {
-            let filtered = this.contents.filter(content => {
-                // 카테고리 필터링
-                if (this.categoryFilter && content.category !== this.categoryFilter) {
-                    return false;
-                }
-                // 수입/지출 필터링
-                if (this.typeFilter && content.type !== this.typeFilter) {
-                    return false;
-                }
-                return true;
-            });
-            return filtered;
-        },
-        categories() {
-            // 카테고리 목록 생성
-            return [...new Set(this.contents.map(content => content.category))];
-        },
+        // 최근 5개만
+        recentContents() {
+            return this.contents.slice(0, 5); 
+        }
     },
     mounted() {
         axios.get('http://localhost:3001/Plus')
@@ -110,13 +75,12 @@ export default {
         },
         // 클릭한 행의 id, jsonType 데이터를 전달
         detailPage(content) {
-            this.$router.push({ 
-                name: 'Detail', 
-                params: { id: content.id, jsonType: content.jsonType } 
-            }
-        );
+            this.$router.push({
+                name: 'Detail',
+                params: { id: content.id, jsonType: content.jsonType }
+            });
+        }
     }
-}
 };
 </script>
 
