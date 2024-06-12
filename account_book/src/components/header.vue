@@ -1,53 +1,72 @@
 <template>
-    <div class="header">
-        <h3>헤더입니다</h3>
-        <nav>
-            <span>Menu1</span>
-            <span>Menu2</span>
-            <span>Menu3</span>
-            <button @click="logout">로그아웃</button>
-        </nav>
+    <div class="button-container">
+        <button id="menu" @click="toggleAside">메뉴</button>
+        <Aside v-if="asideOpen"/>
+
+        <button id="home" @click="clickHome">홈(로고)</button>
+        
+        <button id="profile" @click="toggleProfile">프로필</button>
+        <Profile v-if="profileOpen"/>
     </div>
 </template>
 
 <script>
-export default {
-    name : "header",
-    methods: {
+import Aside from '@/components/aside.vue';
+import Profile from '@/components/login/profile.vue';
 
-    logout() {
-        localStorage.removeItem('loginKey'); 
-        console.log('로그아웃되었습니다.');
-        // 로그아웃 -> 로그인페이지로 이동
-        this.$router.push('/');
-    },
-    checkloginStatus() {
-        const value = localStorage.getItem('loginKey'); 
-        if (value) {
-            console.log('LocalStorage에 값이 있습니다:', value);
-            //this.$router.push('/main');
-        } else {
-            console.log('LocalStorage에 값이 없습니다.');
-            this.$router.push('/');
+    export default {
+        data(){
+            return{
+                asideOpen: false,
+                profileOpen: false
+            };
+        },
+        components:{
+            Aside, Profile
+        },
+        methods:{
+            toggleSidebar(){
+                this.asideOpen = !this.asideOpen;
+            },
+            toggleProfile(){
+                this.profileOpen = !this.profileOpen;
+            },
+            clickHome(){
+                this.$router.push("/main");
+            }
         }
-        }
-    },
-    mounted() {
-    this.checkloginStatus();
     }
-}
 </script>
 
-<style scoped>
-.header {  
-  height: 75px;
-  padding: 1rem;
-  color: white;
-  background: teal;
-  font-weight: bold;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+<style>
+.button-container {
+    margin-top: 0;
+    width: 100%;
+    height: 42px;
+    position: fixed;
+    left: 0;
+    right:0;
+    top: 0;
+    align-items: center;
+    background-color: #FFD700; 
+    padding: 10px;
+    
 }
 
+#menu {
+    position: fixed;
+    margin-left: 10px;
+    left: 10px
+}
+
+#home {
+    position: fixed;
+    margin: 0 auto;
+}
+
+#profile {
+    position: fixed;
+    margin-right: 10px;
+    right: 10px;
+}
 </style>
