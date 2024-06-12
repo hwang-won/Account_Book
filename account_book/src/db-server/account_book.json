@@ -2,26 +2,17 @@
   "User": [
     {
       "user_id": "user_id1",
-      "password": "1111",
-      "name": "사용자",
-      "email": "user123@gmail.com",
-      "account": 10000
-    },
-    {
-      "id": "374f",
-      "user_id": "user_id2",
       "password": "2222",
-      "name": "사용자2",
-      "email": "abc@mail.com",
-      "account": "100"
+      "name": "테스트2",
+      "email": "test",
+      "id": "374f"
     },
     {
       "id": "0669",
       "user_id": "test_id",
       "password": "1111",
       "name": "test",
-      "email": "abc",
-      "account": "1"
+      "email": "abc"
     }
   ],
   "Plus": [
