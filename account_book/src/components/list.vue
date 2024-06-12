@@ -31,8 +31,8 @@
             </thead>
             <!-- for문으로 값 넣기 -->
             <tbody>
-                <tr v-for="content in filterContents" :key="content.id" @click="detailPage(content)">
-                    <td>{{ content.create_date }}</td>
+                <tr v-for="content in filteredContents" :key="content.id" @click="detailPage(content)">
+                    <td>{{ deleteT(content.create_date) }}</td>
                     <td>{{ content.category }}</td>
                     <td>{{ content.money }}</td>
                     <td>{{ content.type }}</td>
@@ -56,7 +56,7 @@ export default {
     },
     computed: {
         // 필터링
-        filterContents() {
+        filteredContents() {
             let filtered = this.contents.filter(content => {
                 // 카테고리 필터링
                 if (this.categoryFilter && content.category !== this.categoryFilter) {
@@ -75,6 +75,7 @@ export default {
             return [...new Set(this.contents.map(content => content.category))];
         },
     },
+    // json server 값 받아오기
     mounted() {
         axios.get('http://localhost:3001/Plus')
             .then(plusRes => {
@@ -96,8 +97,7 @@ export default {
             })
             .catch(err => {
                 alert(err);
-            }
-        );
+            });
     },
     methods: {
         // json 데이터를 날짜 순으로 정렬
@@ -113,10 +113,13 @@ export default {
             this.$router.push({ 
                 name: 'Detail', 
                 params: { id: content.id, jsonType: content.jsonType } 
-            }
-        );
+            });
+        },
+        // 날짜에 t 없애기
+        deleteT(data) {
+            return data.replace('T', ' ');
+        }
     }
-}
 };
 </script>
 

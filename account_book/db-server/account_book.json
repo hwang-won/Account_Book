@@ -22,14 +22,14 @@
         {
             "id" : 2,
             "user_id" : "user_id",
-            "money" : 20100,
+            "money" : 201001,
             "create_date" : "2024-6-11T13:00",
             "update_date" : "2024-6-11T15:00",
             "category" : "수입",
             "memo" : "수입임."
         },
         {
-            "id" : 244,
+            "id" : 2442,
             "user_id" : "user_id",
             "money" : 20100,
             "create_date" : "2024-6-12T13:25",
@@ -47,7 +47,7 @@
             "memo" : "수입임."
         },
         {
-            "id" : 244,
+            "id" : 2441,
             "user_id" : "user_id",
             "money" : 20100,
             "create_date" : "2024-6-17T13:50",
@@ -69,7 +69,7 @@
             "memo" : "전기세 많이 나왔으니 절약"
         },
         {
-            "id" : 6,
+            "id" : 62,
             "user_id" : "user_id",
             "money" : 28000,
             "create_date" : "2024-6-11T10:00",
@@ -78,7 +78,7 @@
             "memo" : "내기 싫다"
         },
         {
-            "id" : 6,
+            "id" : 61,
             "user_id" : "user_id",
             "money" : 28000,
             "create_date" : "2024-6-12T11:00",
@@ -87,7 +87,7 @@
             "memo" : "내기 싫다"
         },
         {
-            "id" : 6,
+            "id" : 63,
             "user_id" : "user_id",
             "money" : 28000,
             "create_date" : "2024-6-12T10:00",
