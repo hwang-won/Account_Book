@@ -7,6 +7,8 @@ import Pw_search from '@/components/login/pw_search.vue';
 import ProfileView from '@/views/profileView.vue';
 import ListDetailView from '@/views/listDetailView.vue';
 import MainView from '@/views/mainView.vue';
+import NoticeDetail from '@/components/body/noticeDetail.vue';
+
 
 const routes = [
 
@@ -58,6 +60,12 @@ const routes = [
         name: 'Profile',
         component: ProfileView
 
+    },
+    ,
+    {
+        path:'/noticeDetail/:id',
+        name: 'NoticeDetail',  
+        component: NoticeDetail
     }
     
 ];

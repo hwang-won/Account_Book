@@ -1,10 +1,8 @@
 <template>
     <div>
         <Header @toggle_aside="toggle_aside" />
-        <Aside  v-if="asideOpen"
-        @tab_value="update_body"
-        @tab_home="update_home" />
-        <Profile/>
+        <Aside v-if="asideOpen" @tab_value="update_body" @tab_home="update_home" />
+        <NoticeDetail />
     </div>
 </template>
 
@@ -16,26 +14,28 @@ import Client from '@/components/body/client.vue';
 import Detail from '@/components/body/detail.vue';
 import List from '@/components/body/list.vue';
 import Notice from '@/components/body/notice.vue';
-import Profile from '@/components/login/profile.vue';
+import NoticeDetail from '@/components/body/noticeDetail.vue';
+
+
 
 export default {
-    name: "profileView",
-    components:{Header, Aside, Body, Client, Detail, List, Notice, Profile},
+    name: "noticeView",
+    components: { Header, Aside, Body, Client, Detail, List, Notice, NoticeDetail },
 
-    data(){
-        return{
-            tabs:"Body",
+    data() {
+        return {
+            tabs: "Body",
             asideOpen: false
         }
     },
 
-    mounted(){
+    mounted() {
         this.checkloginStatus();
     },
 
-    methods:{
+    methods: {
         checkloginStatus() {
-            const value = localStorage.getItem('loginKey'); 
+            const value = localStorage.getItem('loginKey');
             if (value) {
                 console.log('LocalStorage에 값이 있습니다:', value);
                 //this.$router.push('/main');
@@ -45,11 +45,11 @@ export default {
             }
         },
         // 사이드바에서 탭 클릭시 동적 컴포넌트 기능으로 컴포넌트 변경
-        update_body(e){
+        update_body(e) {
             this.tabs = e;
         },
 
-        update_home(e){
+        update_home(e) {
             this.tabs = e;
         },
 
@@ -57,8 +57,49 @@ export default {
             this.asideOpen = !this.asideOpen;
         },
     }
-}
+}   
 </script>
-<style>
-    
+<style scoped>
+.header {
+    z-index: 4;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0;
+    height: 100%;
+}
+
+.content-wrapper {
+    display: flex;
+    width: 100%;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1500px;
+    transition: margin-left 0.3s ease;
+}
+
+.content-with-aside {
+    margin-left: 130px;
+}
+
+.aside {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3;
+}
+
+.toggle {
+    position: fixed;
+    z-index: 4;
+}
 </style>
