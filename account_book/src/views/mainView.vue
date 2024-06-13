@@ -1,9 +1,11 @@
 <template>
-    <div>
-        <Header @toggle-sidebar="toggleSidebar" @change-tab="update_body"/>
-        <Aside v-if="asideOpen" @tab_value="update_body" />
-        <component :is="tabs" ref="listComponent"></component>
-        <Toggle @add-transaction="handleAddTransaction"/>
+    <div class="main-container">
+        <Header class="header" @toggle-sidebar="toggleSidebar" @change-tab="update_body"/>
+        <Aside v-if="asideOpen" @tab_value="update_body" class="aside" />
+            <div class="content">
+            <component :is="tabs" ref="listComponent"></component>
+            </div>
+        <Toggle class="toggle" @add-transaction="handleAddTransaction"/>
     </div>
 </template>
 
@@ -59,5 +61,35 @@ export default {
 }
 </script>
 <style>
-    
+.header{
+    z-index:4;
+}
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0;
+    height: 100%;
+    z-index: 1;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 2;
+    width: 1500px;
+    height:1500px;
+}
+.aside {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3; /* 컨텐트 보다 앞에 나오게 */ 
+}
+.toggle{
+    position:fixed;
+    z-index: 4;
+}
 </style>
