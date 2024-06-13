@@ -2,27 +2,29 @@
     <div>
         <h1>Recent List</h1>
         <!-- 테이블 -->
-        <table>
-            <thead>
-                <tr>
-                    <th>날짜</th>
-                    <th>카테고리</th>
-                    <th>금액</th>
-                    <th>수입/지출</th>
-                    <th>메모</th>
-                </tr>
-            </thead>
-            <!-- for문으로 값 넣기 -->
-            <tbody>
-                <tr v-for="(content, index) in recentContents" :key="index" @click="detailPage(content)">
-                    <td>{{ content.create_date }}</td>
-                    <td>{{ content.category }}</td>
-                    <td>{{ content.money }}</td>
-                    <td>{{ content.type }}</td>
-                    <td>{{ content.memo }}</td>
-                </tr>
-            </tbody>
-        </table>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>날짜</th>
+                        <th>카테고리</th>
+                        <th>금액</th>
+                        <th>수입/지출</th>
+                        <th>메모</th>
+                    </tr>
+                </thead>
+                <!-- for문으로 값 넣기 -->
+                <tbody>
+                    <tr v-for="(content, index) in recentContents" :key="index" @click="detailPage(content)">
+                        <td>{{ deleteT(content.create_date) }}</td>
+                        <td>{{ content.category }}</td>
+                        <td>{{ content.money }}</td>
+                        <td>{{ content.type }}</td>
+                        <td>{{ content.memo }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </template>
 
@@ -80,21 +82,32 @@ export default {
                 name: 'Detail',
                 params: { id: content.id, jsonType: content.jsonType }
             });
+        },
+        // 날짜에 t 없애기
+        deleteT(data) {
+            return data.replace('T', ' ');
         }
     }
 };
 </script>
 
-<style>
-    table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-    th, td {
-        border: 1px solid #cfcfcf;
-        padding: 8px;
-    }
-    th {
-        background-color: #eeeeee;
-    }
+<style scoped>
+table {
+    width: 800px;
+    border-collapse: collapse;
+    border-radius: 10px;
+    box-shadow:  0 0 0 1px #e0e0e0;
+    border-style: hidden;   
+    text-align: left;
+}
+th, td {
+    border: 1px solid #cfcfcf;
+    padding:12px;
+    border-right: none;
+    border-left: none;
+}
+tr:hover {
+    background-color: #ebebeb;
+    cursor: pointer;
+}
 </style>

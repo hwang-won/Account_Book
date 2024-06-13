@@ -1,27 +1,35 @@
 <template>
-    <div>
+    <div class="wrap">
         <h1>list</h1>
-        <div>
+        <div class="filter">
             <!-- 날짜선택 -->
-            <label for="startDate">시작일:</label>
-            <input type="date" id="startDate" v-model="startDate">
-            <label for="endDate">종료일:</label>
-            <input type="date" id="endDate" v-model="endDate">
+            <div>
+                <label for="startDate">시작일</label>
+                <input type="date" id="startDate" v-model="startDate">
+            </div>
+            <div>
+                <label for="endDate">종료일</label>
+                <input type="date" id="endDate" v-model="endDate">
+            </div>
 
             <!-- 카테고리 선택 -->
-            <label for="category">카테고리:</label>
-            <select id="category" v-model="categoryFilter">
-                <option value="">전체</option>
-                <option v-for="category in categories" :key="category">{{ category }}</option>
-            </select>
+            <div>
+                <label for="category">카테고리</label>
+                <select id="category" v-model="categoryFilter">
+                    <option value="">전체</option>
+                    <option v-for="category in categories" :key="category">{{ category }}</option>
+                </select>
+            </div>
             
             <!-- 수입/지출 선택 -->
-            <label for="type">수입/지출:</label>
-            <select id="type" v-model="typeFilter">
-                <option value="">전체</option>
-                <option value="수입">수입</option>
-                <option value="지출">지출</option>
-            </select>
+            <div>
+            <label for="type">수입/지출</label>
+                <select id="type" v-model="typeFilter">
+                    <option value="">전체</option>
+                    <option value="수입">수입</option>
+                    <option value="지출">지출</option>
+                </select>
+            </div>
         </div>
 
         <!-- 테이블 -->
@@ -138,16 +146,58 @@ export default {
 };
 </script>
 
-<style>
-    table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-    th, td {
-        border: 1px solid #cfcfcf;
-        padding: 8px;
-    }
-    th {
-        background-color: #eeeeee;
-    }
+<style scoped>
+.wrap {
+    width: 1000px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: rgb(252, 250, 241);
+    box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.2);
+}
+
+.filter {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 10px;
+    background-color: white;
+    padding: 12px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    margin-right: 10px;
+    font-weight: 600;
+}
+
+input[type="date"],
+select {
+    padding: 6px;
+    border-radius: 5px;
+    border: 1px solid rgb(182, 182, 182);
+}
+
+table {
+    width: 100%;
+    background-color: white;
+    border-collapse: collapse;
+    border-radius: 5px;
+    box-shadow:  0 0 0 1px #e0e0e0;
+    border-style: hidden;  
+    text-align: le;
+
+}
+th, td {
+    border: 1px solid #cfcfcf;
+    padding: 8px;
+    border-right: none;
+    border-left: none;
+}
+th {
+    background-color: #ebebeb;
+}
+tr:hover {
+    background-color: #ebebeb;
+    cursor: pointer;
+}
 </style>
