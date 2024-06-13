@@ -10,7 +10,7 @@
             <option value="Minus">지출</option>
           </select>
           <label for="date">날짜:</label>
-            <input type="date" v-model="date" id="date" name="date"><br><br>
+            <input type="datetime-local" v-model="date" id="date" name="date"><br><br>
           <label for="amount">금액:</label>
             <input type="number" v-model="amount" id="amount" name="amount"><br><br>
           <label for="category">카테고리:</label>
@@ -31,7 +31,7 @@
       return {
         formVisible: false,
         type: 'Plus',  
-        date: new Date().toISOString().substring(0, 10),
+        date: new Date(),
         amount: '',  
         category: '',  
         memo: ''  
