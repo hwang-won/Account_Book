@@ -82,7 +82,6 @@ export default {
                 .catch(err => alert('오류가 발생했습니다: ' + err));
         },
         checkloginStatus() {
-            alert("로그인 상태 검증");
             const value = localStorage.getItem('loginKey'); 
             if (value) {
                 console.log('LocalStorage에 값이 있습니다:', value);

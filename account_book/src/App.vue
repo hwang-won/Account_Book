@@ -1,16 +1,23 @@
-<template lang="">
-  <div>
-    <router-view/>
+<template>
+  <div id="app">
+    <router-view></router-view>
   </div>
 </template>
-<script>
-import Main from '@/views/mainView.vue';
 
+<script>
+import MainView from '@/views/mainView.vue';
+import LoginView from '@/views/loginView.vue';
 export default {
-  name:'App',
-  components:{ Main }
+  name : "App",
+  components : {MainView, LoginView},
+  data(){
+    return{
+      tabs: ""
+    }
+  }
 }
 </script>
-<style lang="">
-  
+
+<style>
+
 </style>

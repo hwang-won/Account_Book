@@ -46,7 +46,7 @@
 
 import axios from 'axios';
 export default {
-    name: 'id_search',
+    name: 'pw_search',
     data() {
         return {
             id:'',

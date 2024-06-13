@@ -29,6 +29,12 @@
                 </td>
             </tr>
             <tr>
+                <td>계좌잔고</td>
+                <td>
+                    <input v-model="account" placeholder="계좌잔고 입력" size="20"/>
+                </td>
+            </tr>
+            <tr>
                 <td colspan="2">
                     <button @click="addUser">회원가입</button>
                 </td>
@@ -48,6 +54,7 @@ export default {
             pw: "",
             name: "",
             email: "",
+            account: "",
             message: ""
         }
     },
@@ -56,6 +63,7 @@ export default {
             //alert('id호출')
             axios.get(`http://localhost:3001/User?user_id=${this.id}`)
                 .then((res) => {
+
 
                     // console.log("idcheck실행")
                     // console.log(JSON.stringify(res.data))
@@ -70,18 +78,19 @@ export default {
                     }
 
                 })
-                .catch(err => alert(err))
+                .catch(err => alert(err));
         },
         addUser() {
             //console.log("addUser실행")
 
-            if (!this.id || !this.pw || !this.name || !this.email) {
+            if (!this.id || !this.pw || !this.name || !this.email || !this.account) {
                 alert("모든 값을 입력해주세요.");
                 return;
             }
             const newUser = {
                 user_id: this.id, password: this.pw,
                 name: this.name, email: this.email,
+                account: this.account
             };
             axios.post("http://localhost:3001/User", newUser)
                 .then(res => {
@@ -93,6 +102,8 @@ export default {
                     // 로그인 페이지 이동
                     this.$router.push('/');
 
+
+
                 })
                 .catch(err => alert(err));
         },
@@ -101,6 +112,7 @@ export default {
             this.pw = '';
             this.name = '';
             this.email = '';
+            this.account = '';
         }
 
     }

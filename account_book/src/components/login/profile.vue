@@ -56,7 +56,7 @@
 import axios from 'axios';
 
 export default {
-    name: 'profileEdit',
+    name: 'Profile',
     data() {
         return {
             loginID: '',    //login 아이디
