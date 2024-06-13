@@ -56,7 +56,7 @@ export default {
         memo: this.memo
       };
 
-      const url = `http://localhost:3001/${this.type}?user_id=${user}`;
+      const url = `http://localhost:3001/${this.type}?user_id=${userId}`;
 
       axios.post(url,params)
           .then(response=> {
