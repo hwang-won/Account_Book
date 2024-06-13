@@ -1,28 +1,38 @@
 <template>
-    <div>
-      <button @click="toggleForm" class="toggle-button">+</button>
-      <div v-if="formVisible" class="transaction-form">
-        <h2>신규 가계부 작성</h2>
-        <form @submit.prevent="submitForm">
-          <label for="type">유형:</label>
-          <select v-model="type" id="type">
-            <option value="Plus">수입</option>
-            <option value="Minus">지출</option>
+  <div class="">
+    <button @click="toggleForm" class="toggle-button">+</button>
+    <div v-if="formVisible" class="transaction-form">
+      <h2>가계부 작성</h2>
+      <form @submit.prevent="submitForm">
+        <div class="wrap">
+          <div>
+            <label for="type">유형</label>
+            <select v-model="type" id="type">
+              <option value="Plus">수입</option>
+              <option value="Minus">지출</option>
           </select>
-          <label for="date">날짜:</label>
+          </div>
+          <div>
+            <label for="date">날짜</label>
             <input type="datetime-local" v-model="date" id="date" name="date"><br><br>
-          <label for="amount">금액:</label>
-            <input type="number" v-model="amount" id="amount" name="amount"><br><br>
-          <label for="category">카테고리:</label>
-            <input type="text" v-model="category" id="category" name="category"><br><br>
-          <label for="memo">메모:</label>
-            <input type="text" v-model="memo" id="memo" name="memo"><br><br>
-          <button type="submit">등록</button>
-        </form>
-      </div>
+          </div>
+          <div>
+            <input type="number" v-model="amount" id="amount" name="amount" placeholder="금액"><br><br>
+          </div>
+          <div>
+            <input type="text" v-model="category" id="category" name="category" placeholder="카테고리"><br><br>
+          </div>
+          <div>
+            <input type="text" v-model="memo" id="memo" name="memo" placeholder="메모"><br><br>
+          </div>
+        </div>
+
+        <button class="Btn" type="submit">등록</button>
+      </form>
     </div>
+  </div>
 </template>
-  
+
 <script>
 import axios from 'axios';
 
@@ -56,7 +66,7 @@ export default {
         memo: this.memo
       };
 
-      const url = `http://localhost:3001/${this.type}?user_id=${userId}`;
+      const url = `http://localhost:3001/${this.type}?user_id=${user}`;
 
       axios.post(url,params)
           .then(response=> {
@@ -79,34 +89,71 @@ export default {
   }
 };
 </script>
-  
-<style scoped>
 
-  .toggle-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #ffcc00;
-    color: white;
-    border: none;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    font-size: 24px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .transaction-form {
-    position: fixed;
-    bottom: 80px;
-    right: 20px;
-    background-color: white;
-    border: 1px solid #ccc;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
+<style scoped>
+.toggle-button {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  background-color: #ffcc00;
+  color: white;
+  border: none;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 40px;
+  padding: 0 0 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.transaction-form {
+  position: fixed;
+  bottom: 120px;
+  right: 20px;
+  width: 300px;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+input[type="datetime-local"],
+select {
+  padding: 6px;
+  border-radius: 5px;
+  border: 1px solid rgb(182, 182, 182);
+  margin-top: 16px;
+}
+
+input[type=text], input[type=number] {
+width: 200px;
+padding: 10px;
+font-size: 16px;
+border-radius: 5px;
+box-sizing: border-box;
+border: 1px solid rgb(173, 173, 173);
+}
+input[type=text]:focus, input[type=number]:focus {
+outline: none;
+border: 1px solid black;
+}
+
+.Btn {
+  width: 100px;
+  border-radius: 5px;
+  background-color: rgb(255, 204, 0);
+  color: rgb(66, 66, 66);
+  font-size: 16px;
+  font-weight: 600;
+}
 </style>
