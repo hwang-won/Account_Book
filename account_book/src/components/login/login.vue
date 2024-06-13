@@ -70,7 +70,7 @@ export default {
                         this.pw = '';
 
                         // 로그인 성공한 경우 : 메인페이지로 이동(추가)
-                        this.$router.push('/body');
+                        this.$router.push('/main');
 
                         
                     } else {
@@ -83,7 +83,7 @@ export default {
             const value = localStorage.getItem('loginKey'); 
             if (value) {
                 console.log('LocalStorage에 값이 있습니다:', value);
-                this.$router.push('/body');
+                this.$router.push('/main');
             } else {
                 console.log('LocalStorage에 값이 없습니다.');
                 // this.$router.push('/');
