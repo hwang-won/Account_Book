@@ -1,0 +1,207 @@
+{
+  "User": [
+    {
+      "user_id": "user_1",
+      "password": "password",
+      "name": "사용자1",
+      "email": "user123@gmail.com",
+      "id": "cb7b"
+    },
+    {
+      "id": "194c",
+      "user_id": "123",
+      "password": "123",
+      "name": "123",
+      "email": "123",
+      "account": "123"
+    },
+    {
+      "id": "c7bd",
+      "user_id": "1234",
+      "password": "1234",
+      "name": "1234",
+      "email": "1234",
+      "account": "1234"
+    },
+    {
+      "id": "77df",
+      "user_id": "12345",
+      "password": "12345",
+      "name": "12345",
+      "email": "12345",
+      "account": "12345"
+    },
+    {
+      "id": "3136",
+      "user_id": "11111",
+      "password": "11111",
+      "name": "11111",
+      "email": "11111",
+      "account": "11111"
+    }
+  ],
+  "Plus": [
+    {
+      "id": "2",
+      "user_id": "user_1",
+      "money": 2400,
+      "create_date": "2016-02-24T10:30",
+      "update_date": "2024-02-24T10:30",
+      "category": "용돈",
+      "memo": "할머니께서 주신 용돈"
+    },
+    {
+      "id": "3",
+      "user_id": "user_1",
+      "money": 3000,
+      "create_date": "2016-05-20T14:45",
+      "update_date": "2024-05-20T14:45",
+      "category": "월급",
+      "memo": "회사에서 지급한 월급"
+    },
+    {
+      "id": "4",
+      "user_id": "user_1",
+      "money": 4000,
+      "create_date": "2016-08-10T09:20",
+      "update_date": "2024-08-10T09:20",
+      "category": "상여금",
+      "memo": "회사에서 지급한 상여금"
+    },
+    {
+      "id": "5",
+      "user_id": "user_1",
+      "money": 2500,
+      "create_date": "2016-10-25T13:55",
+      "update_date": "2024-10-25T13:55",
+      "category": "주식 수익",
+      "memo": "주식 투자로 얻은 이익"
+    },
+    {
+      "id": "6",
+      "user_id": "user_1",
+      "money": 2400,
+      "create_date": "2017-01-12T11:10",
+      "update_date": "2024-01-12T11:10",
+      "category": "이자",
+      "memo": "적금 이자가 들어왔다."
+    },
+    {
+      "id": "7",
+      "user_id": "user_1",
+      "money": 2200,
+      "create_date": "2017-04-08T08:40",
+      "update_date": "2024-04-08T08:40",
+      "category": "급여",
+      "memo": "회사에서 지급한 급여"
+    },
+    {
+      "id": "8",
+      "user_id": "user_1",
+      "money": 3500,
+      "create_date": "2017-07-19T17:25",
+      "update_date": "2024-07-19T17:25",
+      "category": "사업 수입",
+      "memo": "부업으로 벌어들인 수입"
+    },
+    {
+      "id": "9",
+      "user_id": "user_1",
+      "money": 2800,
+      "create_date": "2017-09-30T12:24",
+      "update_date": "2024-09-30T12:24",
+      "category": "환급금",
+      "memo": "보험 환급금"
+    },
+    {
+      "id": "10",
+      "user_id": "user_1",
+      "money": 3200,
+      "create_date": "2017-12-28T09:50",
+      "update_date": "2024-12-28T09:50",
+      "category": "보너스",
+      "memo": "연말 보너스"
+    }
+  ],
+  "Minus": [
+    {
+      "id": "1",
+      "user_id": "user_1",
+      "money": 8000,
+      "create_date": "2017-11-30T24:00",
+      "update_date": "2024-12-11T17:00",
+      "category": "공과금",
+      "memo": "전기세 많이 나왔으니 절약"
+    },
+    {
+      "id": "2",
+      "user_id": "user_1",
+      "money": 5000,
+      "create_date": "2024-03-25T18:30",
+      "update_date": "2024-03-25T24:30",
+      "category": "식비",
+      "memo": "식사 비용"
+    },
+    {
+      "id": "3",
+      "user_id": "user_1",
+      "money": 2000,
+      "create_date": "2024-06-14T11:20",
+      "update_date": "2024-06-14T11:20",
+      "category": "의료비",
+      "memo": "의료 검진 비용"
+    },
+    {
+      "id": "4",
+      "user_id": "user_1",
+      "money": 10000,
+      "create_date": "2024-09-03T14:40",
+      "update_date": "2024-09-03T14:40",
+      "category": "수리비",
+      "memo": "차량 수리 비용"
+    },
+    {
+      "id": "5",
+      "user_id": "user_1",
+      "money": 500,
+      "create_date": "2024-11-20T09:05",
+      "update_date": "2024-11-20T09:05",
+      "category": "문화 생활",
+      "memo": "영화 관람 비용"
+    },
+    {
+      "id": "6",
+      "user_id": "user_1",
+      "money": 10000,
+      "create_date": "2024-11-20T09:05",
+      "update_date": "2024-11-20T09:05",
+      "category": "문화 생활",
+      "memo": "영화 관람 비용"
+    }
+  ],
+  "Notice": [
+    {
+      "id": "1",
+      "title": "새 기능 추가 업데이트 공지",
+      "content": "새로운 기능이 업데이트되었습니다. 사용해보세요!",
+      "create_date": "2024-06-01T09:00",
+      "writer":"작성자"
+    },
+    {
+      "id": "2",
+      "title": "정기 점검 안내",
+      "content": "시스템 정기 점검이 2024년 6월 15일 오전 2시부터 4시까지 진행될 예정입니다.",
+      "create_date": "2024-06-10T14:30",
+      "writer":"작성자"
+
+    },
+    {
+      "id": "3",
+      "title": "서비스 이용 약관 변경 안내",
+      "content": "새로운 서비스 이용 약관이 2024년 7월 1일부터 적용됩니다. 자세한 내용은 홈페이지를 참고하세요.",
+      "create_date": "2024-06-12T11:45",
+      "writer":"작성자" 
+
+    }
+  ]
+}
