@@ -88,6 +88,54 @@ export default {
 }
 
 </script>
-<style lang="">
-
+<style scoped>
+    h1 {
+        padding-top: 60px;
+    }
+    .loginBox   {
+        width: 700px;
+        height: 500px;
+        background-color: rgb(255, 245, 198);
+        border-radius: 50px;
+    }
+    .loginTable {
+        width: 100%;
+        height: 250px;
+        border: 1px solid rgb(255, 245, 198);
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        border: 1px solid rgb(255, 245, 198);
+        padding: 8px;
+    }
+    input[type=text] {
+        width: 400px;
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 5px;
+        box-sizing: border-box;
+        border: 1px solid rgb(173, 173, 173);
+    }
+    input[type=text]:focus {
+        outline: none;
+        border: 1px solid black;
+    }
+    .loginBtn {
+        width: 400px;
+        border-radius: 5px;
+        background-color: rgb(255, 204, 0);
+        font-size: 20px;
+    }
+    td a {
+        font-size: 16px;
+        color: rgb(146, 146, 146);
+        padding: 10px;
+    }
+    td a:hover {
+        font-weight: 600;
+        color: rgb(0, 0, 0);
+    }
 </style>

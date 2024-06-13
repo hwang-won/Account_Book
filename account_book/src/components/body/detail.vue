@@ -1,6 +1,4 @@
 <template>
-    <Header/>
-    <Aside/>
     <div>
         <div>
             <table style="width: 500px;" border="1">
@@ -52,13 +50,10 @@
 
 <script>
 
-import Header from "@/components/header.vue";
-import Aside from "@/components/aside.vue";
 import axios from "axios"
 
 export default {
     name: "Detail",
-    components:{Header, Aside},
     data(){
         return {
             // 상세 페이지 받아올 값들

@@ -31,8 +31,12 @@ export default{
     },
     methods:{
         changeTab(name){
-            this.tab = name;
-            this.$emit("tab_value", this.tab)
+            if (this.$route.path != "/main"){
+                this.$router.push("/main")
+            } else{
+                this.tab = name;
+                this.$emit("tab_value", this.tab)
+            }
         }
     }
 }

@@ -4,8 +4,7 @@
         <Aside  v-if="asideOpen"
         @tab_value="update_body"
         @tab_home="update_home" />
-        <component :is="tabs" ref="listComponent"></component>
-        <Toggle @add-transaction="handleAddTransaction"/>
+        <Detail/>
     </div>
 </template>
 
@@ -14,13 +13,13 @@ import Header from '@/components/header.vue';
 import Aside from '@/components/aside.vue';
 import Body from '@/components/body/body.vue';
 import Client from '@/components/body/client.vue';
+import Detail from '@/components/body/detail.vue';
 import List from '@/components/body/list.vue';
 import Notice from '@/components/body/notice.vue';
-import Toggle from '@/components/body/addToggle.vue';
 
 export default {
     name: "MainView",
-    components:{Header, Aside, Body, Client, List, Notice, Toggle},
+    components:{Header, Aside, Body, Client, Detail, List, Notice, Detail},
 
     data(){
         return{
@@ -56,13 +55,6 @@ export default {
         toggle_aside() {
             this.asideOpen = !this.asideOpen;
         },
-
-        // 현재 탭이 List 일때 데이터를 바로 반응형으로 전달 
-        handleAddTransaction(transactionData) {
-            if (this.tabs === "List" && this.$refs.listComponent) {
-            this.$refs.listComponent.handleAddTransaction(transactionData);
-            }
-        }
     }
 }
 </script>

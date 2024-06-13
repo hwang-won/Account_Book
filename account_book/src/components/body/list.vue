@@ -107,7 +107,7 @@ export default {
         detailPage(content) {
             // 클릭한 행의 id, jsonType 데이터를 전달
             this.$router.push({ 
-                name: 'Detail', 
+                name: 'ListDetailView', 
                 params: { id: content.id, jsonType: content.jsonType } 
             });
         }
