@@ -41,9 +41,9 @@ export default{
 
 <style>
 .sidebar {
-    margin-top: 60px;
-    width: 250px;
     position: fixed;
+    margin-top: 62px;
+    width: 250px;
     left: 0;
     top: 0;
     bottom: 0;
@@ -54,6 +54,8 @@ export default{
 .menu {
     list-style: none;
     padding: 0;
+    width: 230px;
+    margin-left: 10px;
 }
 
 .menu li {
@@ -67,6 +69,7 @@ export default{
     text-decoration: none;
     color: black;
     font-size: 16px;
+    position:fixed;
 }
 
 .router-link-active {

@@ -130,33 +130,6 @@
       "update_date": "2024-12-28T09:50",
       "category": "보너스",
       "memo": "연말 보너스"
-    },
-    {
-      "id": "1718208081764",
-      "user_id": "user_1",
-      "money": 333333,
-      "create_date": "2024-06-15",
-      "update_date": "2024-06-15",
-      "category": "123",
-      "memo": "323"
-    },
-    {
-      "id": "1718209023853",
-      "user_id": "user_1",
-      "money": 11111,
-      "create_date": "2024-06-12",
-      "update_date": "2024-06-12",
-      "category": "ㄷㅂㅈㄷㅈㅂ",
-      "memo": "ㄷㅈㄷㅈ"
-    },
-    {
-      "id": "1718209055777",
-      "user_id": "user_1",
-      "money": 1111341,
-      "create_date": "2024-06-12",
-      "update_date": "2024-06-12",
-      "category": "ㅈㅂㄷㅂㅈ",
-      "memo": "ㄷㅂㅈㄷㅈㅂ"
     }
   ],
   "Minus": [
@@ -188,13 +161,13 @@
       "memo": "영화 관람 비용"
     },
     {
-      "id": "1718238515397",
+      "id": "1718251944467",
       "user_id": "user_1",
-      "money": 1000000,
-      "create_date": "2024-06-13",
-      "update_date": "2024-06-13",
-      "category": "걍",
-      "memo": "걍"
+      "money": 100000,
+      "create_date": "2024-10-09T02:13",
+      "update_date": "2024-10-09T02:13",
+      "category": "새벽 낚시",
+      "memo": "ㄴㄴ"
     }
   ]
 }

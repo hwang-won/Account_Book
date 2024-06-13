@@ -1,7 +1,6 @@
 <template>
     <div class="button-container">
         <button id="menu" @click="toggleSidebar">메뉴</button>
-        <Aside v-if="asideOpen"/>
 
         <button id="home" @click="clickHome">홈(로고)</button>
         
@@ -48,7 +47,6 @@ import Profile from '@/components/login/profile.vue';
     align-items: center;
     background-color: #FFD700; 
     padding: 10px;
-    
 }
 
 #menu {
@@ -58,8 +56,9 @@ import Profile from '@/components/login/profile.vue';
 }
 
 #home {
-    position: fixed;
-    margin: 0 auto;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 #profile {
