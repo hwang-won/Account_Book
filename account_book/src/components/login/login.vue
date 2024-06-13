@@ -1,31 +1,29 @@
 <template>
-    <div>
-        <h1>로그인</h1>
+    <div class="loginBox">
+        <h1>A_B</h1>
         <br />
         <!-- login화면 -->
-        <table border="1">
+        <table border="1" class="loginTable">
             <tr>
-                <td>ID</td>
                 <td>
-                    <input v-model="id" placeholder="id" size="20" />
+                    <input type="text" v-model="id" placeholder="아이디" size="20" />
                 </td>
             </tr>
             <tr>
-                <td>PW</td>
                 <td>
-                    <input type="password" v-model="pw" placeholder="pw" size="20" />
+                    <input type="password" v-model="pw" placeholder="비밀번호" size="20" />
                 </td>
             </tr>
             <tr>
                 <td colspan="2">
-                    <button v-on:click="login">로그인</button>
+                    <button v-on:click="login" class="loginBtn">로그인</button>
                 </td>
             </tr>
             <tr>
                 <td colspan="2">
-                    <a :href="'/id_search'">ID 찾기 |</a>
-                    <a :href="'/pw_search'"> PW 찾기 |</a>
-                    <a :href="'/regi'"> 회원 가입</a>
+                    <a :href="'/id_search'">아이디 찾기</a>
+                    <a :href="'/pw_search'">비밀번호 찾기</a>
+                    <a :href="'/regi'">회원가입</a>
                 </td>
             </tr>
         </table>
@@ -72,7 +70,7 @@ export default {
                         this.pw = '';
 
                         // 로그인 성공한 경우 : 메인페이지로 이동(추가)
-                        this.$router.push('/main');
+                        this.$router.push('/body');
 
                         
                     } else {
@@ -85,7 +83,7 @@ export default {
             const value = localStorage.getItem('loginKey'); 
             if (value) {
                 console.log('LocalStorage에 값이 있습니다:', value);
-                this.$router.push('/main');
+                this.$router.push('/body');
             } else {
                 console.log('LocalStorage에 값이 없습니다.');
                 // this.$router.push('/');

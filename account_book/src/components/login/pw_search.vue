@@ -1,47 +1,40 @@
 <template lang="">
-    <div>
+    <div class="loginBox">
         <h1>비밀번호 찾기</h1>
         <br>
         <!--입력 폼 -->
-        <table border="1">
+        <table border="1" class="loginTable">
             <tr>
-                <td>ID</td>
                 <td>
-                    <input v-model="id" placeholder="id" size="20" />
+                    <input type="text" v-model="id" placeholder="아이디" size="20" />
                 </td>
             </tr>
             <tr>
-                <td>이름</td>
                 <td>
-                    <input v-model="name" placeholder="name" size="20" />
+                    <input type="text" v-model="name" placeholder="이름" size="20" />
                 </td>
             </tr>
             <tr>
-                <td>이메일</td>
                 <td>
-                    <input v-model="email" placeholder="email" size="20" />
+                    <input type="text" v-model="email" placeholder="이메일" size="20" />
                 </td>
             </tr>
             
             <tr>
                 <td colspan="2">
-                    <button v-on:click="findPassword">PW찾기</button>
+                    <button v-on:click="findPassword" class="loginBtn">확인</button>
                 </td>
             </tr>
             <tr>
                 <td colspan="2">
-                    <a :href="'/id_search'"> id 찾기 |  </a>
-                    <a :href="'/'"> 로그인 페이지로 </a>
-
+                    <a :href="'/id_search'">아이디 찾기</a>
+                    <a :href="'/'">로그인</a>
                 </td>
             </tr>
-
         </table>
-        <br>
-        회원님의 password: {{ resultPassword }}
-
     </div>
 </template>
+
 <script>
 
 import axios from 'axios';
@@ -70,8 +63,8 @@ export default {
                     const serverData = res.data[0];
                     if (serverData.user_id === this.id && serverData.name === this.name && serverData.email === this.email) {
                         this.resultPassword = serverData.password
-                        alert("password 찾기 성공");
-                        console.log("회원님의 Password :",this.resultPassword);
+                        alert("비밀번호 찾기 성공! 회원님의 비밀번호는 : " + this.resultPassword + " 입니다" );
+                        // console.log("회원님의 Password :",this.resultPassword);
                         //alert(serverData.user_id + "님 환영합니다");
 
                         // this.email = '';
@@ -82,8 +75,7 @@ export default {
                     }
                 })
                 .catch(err => alert('오류가 발생했습니다: ' + err));
-
-        }
+        },
     }
 }
 

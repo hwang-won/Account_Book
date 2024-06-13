@@ -3,7 +3,9 @@
         <Header @toggle_aside="toggle_aside" />
         <Aside  v-if="asideOpen"
         @tab_value="update_body"
-        @tab_home="update_home" />
+        @tab_home="update_home"
+        v-bind:create_tab="create_tab"
+        />
         <component :is="tabs" ref="listComponent"></component>
         <Toggle @add-transaction="handleAddTransaction"/>
     </div>
@@ -25,6 +27,7 @@ export default {
     data(){
         return{
             tabs:"Body",
+            create_tab:"Body",
             asideOpen: false
         }
     },
@@ -47,10 +50,12 @@ export default {
         // 사이드바에서 탭 클릭시 동적 컴포넌트 기능으로 컴포넌트 변경
         update_body(e){
             this.tabs = e;
+            this.create_tab = this.tabs
         },
 
         update_home(e){
             this.tabs = e;
+            this.create_tab = this.tabs
         },
 
         toggle_aside() {

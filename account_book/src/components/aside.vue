@@ -26,7 +26,9 @@ export default{
             tab:"Body"
        } 
     },
+    props : {create_tab : String},
     created(){
+        this.tab = this.create_tab
         this.$emit("tab_value", this.tab)
     },
     methods:{

@@ -98,8 +98,8 @@ export default {
 
                     this.user_id = response.data[0].user_id
                     this.money = response.data[0].money
-                    this.create_date = response.data[0].create_date;
-                    this.update_date = response.data[0].update_date;
+                    this.create_date = response.data[0].create_date.replace('T', ' ');
+                    this.update_date = response.data[0].update_date.replace('T', ' ');
                     this.category = response.data[0].category;
                     this.memo = response.data[0].memo;
 

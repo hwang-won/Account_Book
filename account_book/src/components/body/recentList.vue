@@ -49,7 +49,7 @@ export default {
             .then(plusRes => {
                 plusRes.data.forEach(item => {
                     item.type = '수입';
-                    item.jsonType = 'plus';
+                    item.jsonType = 'Plus';
                     this.contents.push(item);
                 });
                 return axios.get('http://localhost:3001/Minus');
@@ -57,7 +57,7 @@ export default {
             .then(minusRes => {
                 minusRes.data.forEach(item => {
                     item.type = '지출';
-                    item.jsonType = 'minus';
+                    item.jsonType = 'Minus';
                     this.contents.push(item);
                 });
                 // 날짜 순 정렬
@@ -89,7 +89,7 @@ export default {
         // 클릭한 행의 id, jsonType 데이터를 전달
         detailPage(content) {
             this.$router.push({
-                name: 'Detail',
+                name: 'ListDetailView',
                 params: { id: content.id, jsonType: content.jsonType }
             });
         },

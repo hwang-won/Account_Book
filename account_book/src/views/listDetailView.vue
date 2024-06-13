@@ -19,7 +19,7 @@ import Notice from '@/components/body/notice.vue';
 
 export default {
     name: "MainView",
-    components:{Header, Aside, Body, Client, Detail, List, Notice, Detail},
+    components:{Header, Aside, Body, Client, Detail, List, Notice},
 
     data(){
         return{
