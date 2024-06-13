@@ -17,35 +17,49 @@ import Notice from '@/components/body/notice.vue'
 
 export default {
     name: "MainView",
-    components:{Header, Aside, Body, Client, Detail, List, Notice},
+    components: { Header, Aside, Body, Client, Detail, List, Notice },
 
-    data(){
-        return{
-            tabs:"Body"
-        }
+    data() {
+        return {
+            tabs: "Body",
+            checkLoginInterval: null
+        };
     },
 
-    mounted(){
-        this.checkloginStatus();
+    mounted() {
+        this.checkLoginStatus();
+        this.startLoginCheckTimer();
     },
 
-    methods:{
-        checkloginStatus() {
+    beforeDestroy() {
+        this.stopLoginCheckTimer();
+    },
+
+    methods: {
+        checkLoginStatus() {
             const value = localStorage.getItem('loginKey'); 
             if (value) {
                 console.log('LocalStorage에 값이 있습니다:', value);
-                //this.$router.push('/main');
             } else {
                 console.log('LocalStorage에 값이 없습니다.');
                 this.$router.push('/');
             }
         },
-        update_body(e){
+        update_body(e) {
             this.tabs = e;
         },
+        startLoginCheckTimer() {
+            this.checkLoginInterval = setInterval(this.checkLoginStatus, 5000); // 5초마다 로그인 상태 확인
+        },
+        stopLoginCheckTimer() {
+            if (this.checkLoginInterval) {
+                clearInterval(this.checkLoginInterval);
+                this.checkLoginInterval = null;
+            }
+        }
     }
 }
 </script>
+
 <style>
-    
 </style>
