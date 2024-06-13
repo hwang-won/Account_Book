@@ -7,7 +7,6 @@ import Pw_search from '@/components/login/pw_search.vue';
 
 import ProfileView from '@/views/profileView.vue';
 import ListDetailView from '@/views/listDetailView.vue';
-import FullCalendar from '@/views/fullCalendar.vue';
 
 import MainView from '@/views/mainView.vue';
 
@@ -62,14 +61,6 @@ const routes = [
         component: ProfileView
 
     },
-
-    // MainView -> fullCalender.vue
-    {
-        path:'/fullCalendar',
-        name: 'FullCalendar',
-        component: FullCalendar
-
-    }
     
 ];
 
