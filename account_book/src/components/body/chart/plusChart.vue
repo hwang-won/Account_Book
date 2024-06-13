@@ -68,15 +68,15 @@ methods: {
     data.addColumn("number", "수입");
 
     const monthNames = [
-        "01",
-        "02",
-        "03",
-        "04",
-        "05",
-        "06",
-        "07",
-        "08",
-        "09",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
         "10",
         "11",
         "12",
@@ -88,8 +88,8 @@ methods: {
     const options = {
         titleTextStyle: { fontSize: 20 },
         curveType: "function",
-        legend: { position: "bottom" },
-        chartArea: { width: "80%", height: "70%" },
+        legend: { position: "top" },
+        chartArea: { width: "70%", height: "70%" },
     };
 
     const chart = new google.visualization.LineChart(this.$refs.incomeChart);
@@ -100,35 +100,33 @@ methods: {
 </script>
 
 <style scoped>
-    .chart-container {
-        position: relative;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 16px;
-        text-align: center;
-        height: auto;
-        width: 100%;
-    }
+.chart-container {
+  position: relative;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  width: 100%;
+}
 
-    .chart-header {
-        margin-bottom: 8px;
-        text-align: left;
-    }
+.chart-header {
+  margin-bottom: 8px;
+  text-align: left;
+  width: 100%;
+}
 
-    .chart-label {
-        font-size: 14px;
-        margin: 0;
-        color: #666;
-    }
+.chart-label {
+  font-size: 14px;
+  margin: 0;
+  color: #666;
+}
 
-    .chart-total {
-        font-size: 24px;
-        margin: 4px 0;
-        font-weight: bold;
-    }
-
-    #incomeChart {
-        width: 100%;
-        height: 100%;
-    }
+.chart-total {
+  font-size: 24px;
+  margin: 4px 0;
+  font-weight: bold;
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+}
 </style>
