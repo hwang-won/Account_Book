@@ -1,12 +1,18 @@
 <template>
-    <div class="button-container">
-        <button id="menu" @click="toggleAside">메뉴</button>
-        <button id="home" @click="clickHome">홈(로고)</button>
-        <div class="profile-container">
-            <button id="profile" @click="toggleProfile">프로필</button>
-            <div class="profile-dropdown" v-if="profileOpen">
-                <button @click="viewProfile">내정보</button>
-                <button @click="logout">로그아웃</button>
+    <div class="wrap">
+        <div class="box"  @click="toggleAside"> 
+            <p>메뉴</p>
+        </div>
+        <div class="box" @click="clickHome">
+            <p>홈(로고)</p>
+        </div>
+        <div class="profileBox box">
+            <p class="profileBtn" @click="toggleProfile">프로필</p>
+            <div class="dropdown" v-if="profileOpen">
+                <ul>
+                    <li @click="viewProfile">내정보</li>
+                    <li @click="logout">로그아웃</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -61,61 +67,72 @@ import Aside from '@/components/aside.vue';
     }
 </script>
 
-<style>
-.button-container {
-    margin-top: 0;
+<style scoped>
+.wrap {
     width: 100%;
-    height: 42px;
-    position: fixed;
-    left: 0;
-    right:0;
-    top: 0;
-    align-items: center;
     background-color: #FFD700; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 42px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 10px;
-    
 }
-
-#menu {
-    position: fixed;
-    margin-left: 10px;
-    left: 10px
+.box {
+    font-size: 600;
+    border: 5px;
+    border: 1px solid transparent;
+    border-radius: 10px;
 }
-
-#home {
-    position: fixed;
-    margin: 0 auto;
+.box:hover {
+    border: 1px solid #ffe75d;
+    background-color: #ffe75d;
+    cursor: pointer;
 }
-
-#profile {
-    position: fixed;
-    margin-right: 10px;
-    right: 10px;
+p {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 16px 20px 16px 20px;
+    padding: 0;
 }
-
-.profile-dropdown {
-    display: none;
+.profileBox {
+    position: relative;
+}
+.profileBtn{
+    margin-right: 30px;
+}
+.dropdown {
+    width: 200px;
     position: absolute;
-    background-color: #f1f1f1;
-    min-width: 120px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+    top: 100%;
     right: 0;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    visibility: hidden;
+    opacity: 0;
 }
-
-.profile-dropdown button {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
+.profileBox:hover .dropdown {
+    visibility: visible;
+    opacity: 1;
 }
-
-.profile-dropdown button:hover {
-    background-color: #ddd;
+li {
+    list-style: none;
 }
-
-.profile-container:hover .profile-dropdown {
-    display: block;
+.dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.dropdown li {
+    padding: 12px;
+    cursor: pointer;
+}
+.dropdown li:hover {
+    background-color: #fff2a8;
 }
 </style>
+
+
+z-index: 100;

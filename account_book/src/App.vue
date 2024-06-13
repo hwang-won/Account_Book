@@ -7,10 +7,9 @@
 <script>
 import MainView from '@/views/mainView.vue';
 import LoginView from '@/views/loginView.vue';
-import noticeView from '@/views/noticeView.vue';
-export default {
+export default{
   name : "App",
-  components : {MainView, LoginView, noticeView},
+  components : {MainView, LoginView},
   data(){
     return{
       tabs: ""

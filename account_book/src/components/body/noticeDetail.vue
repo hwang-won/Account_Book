@@ -33,7 +33,7 @@ export default {
             notice: {},
             date: ""
         }
-    },
+    },    
     mounted() {
         this.getNoticeDetail();
     },

@@ -28,19 +28,12 @@ export default {
         return{
             tabs:"Body",
             create_tab:"Body",
-            asideOpen: false,
-            checkLoginInterval: null
+            asideOpen: false
         }
     },
 
     mounted(){
         this.checkloginStatus();
-        this.startLoginCheckTimer();
-
-    },
-
-    beforeDestroy() {
-        this.stopLoginCheckTimer();
     },
 
     methods:{
@@ -48,7 +41,7 @@ export default {
             const value = localStorage.getItem('loginKey'); 
             if (value) {
                 console.log('LocalStorage에 값이 있습니다:', value);
-                
+                //this.$router.push('/main');
             } else {
                 console.log('LocalStorage에 값이 없습니다.');
                 this.$router.push('/');
@@ -73,16 +66,6 @@ export default {
         handleAddTransaction(transactionData) {
             if (this.tabs === "List" && this.$refs.listComponent) {
             this.$refs.listComponent.handleAddTransaction(transactionData);
-            }
-        },
-        startLoginCheckTimer() {
-            this.checkLoginInterval = setInterval(this.checkLoginStatus, 5000); // 5초
-            
-        },
-        stopLoginCheckTimer() {
-            if (this.checkLoginInterval) {
-                clearInterval(this.checkLoginInterval);
-                this.checkLoginInterval = null;
             }
         }
     }

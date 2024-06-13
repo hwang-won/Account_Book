@@ -4,11 +4,12 @@ import LoginView from '@/views/loginView.vue';
 import Regi from '@/components/login/regi.vue';
 import Id_search from '@/components/login/id_search.vue';
 import Pw_search from '@/components/login/pw_search.vue';
+
 import ProfileView from '@/views/profileView.vue';
 import ListDetailView from '@/views/listDetailView.vue';
-import MainView from '@/views/mainView.vue';
-import NoticeDetail from '@/components/body/noticeDetail.vue';
 
+import MainView from '@/views/mainView.vue';
+import NoticeView from '@/views/noticeView.vue';
 
 const routes = [
 
@@ -61,11 +62,11 @@ const routes = [
         component: ProfileView
 
     },
-    ,
+    // notice -> noticeView -> noticeDetail
     {
-        path:'/noticeDetail/:id',
-        name: 'NoticeDetail',  
-        component: NoticeDetail
+        path:'/noticeView/:id',
+        name: 'NoticeView',  
+        component: NoticeView
     }
     
 ];

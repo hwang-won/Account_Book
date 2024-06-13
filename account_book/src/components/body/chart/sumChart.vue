@@ -125,7 +125,6 @@ export default {
         padding: 16px;
         text-align: center;
         width: 100%;
-        height: auto;
     }
 
     .chart-header {
@@ -144,10 +143,8 @@ export default {
         font-size: 24px;
         margin: 4px 0;
         font-weight: bold;
-    }
-
-    #incomeChart {
-        width: 100%;
-        height: 100%;
+        white-space: nowrap; 
+        overflow: hidden; 
+        text-overflow: ellipsis; 
     }
 </style>

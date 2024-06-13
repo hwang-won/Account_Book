@@ -51,7 +51,7 @@ export default {
                 .catch(err => alert("오류 발생: " + err));
         },
         detailPage(id) {
-            this.$router.push({ name:'NoticeDetail', params: { id: id } });
+            this.$router.push({ name:'NoticeView', params: { 'id': id } });
         },
         deleteT(data) {
             return data.replace('T', ' ');

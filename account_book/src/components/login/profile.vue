@@ -70,7 +70,7 @@ export default {
     },
     methods: {
         getUser() {
-            alert("get user 실행");
+            //alert("get user 실행");
             const value = JSON.parse(localStorage.getItem('loginKey'));
             this.loginID = value.user_id;
             console.log("현재 접속된 계정:", this.loginID);
@@ -82,8 +82,6 @@ export default {
                     this.name = this.userData.name;
                     this.email = this.userData.email;
                     this.dataID = this.userData.id;
-                    // console.log(JSON.stringify(this.userData));
-                    // console.log("dataID", this.dataID);
                 })
                 .catch(err => alert("오류발생 :" + err));
         },
@@ -111,7 +109,6 @@ export default {
             this.editMode = !this.editMode;
         },
         goMain(){
-            //this.$router.push('/body');
             this.$router.push('/main');
         }
     },

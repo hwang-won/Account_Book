@@ -2,34 +2,31 @@
     <div>
         <Header @toggle_aside="toggle_aside" />
         <Aside v-if="asideOpen" @tab_value="update_body" @tab_home="update_home" />
-        <NoticeDetail />
+        <NoticeDetail v-bind:id="id"/>
     </div>
 </template>
 
 <script>
 import Header from '@/components/header.vue';
 import Aside from '@/components/aside.vue';
-import Body from '@/components/body/body.vue';
-import Client from '@/components/body/client.vue';
-import Detail from '@/components/body/detail.vue';
-import List from '@/components/body/list.vue';
-import Notice from '@/components/body/notice.vue';
 import NoticeDetail from '@/components/body/noticeDetail.vue';
 
 
-
 export default {
-    name: "noticeView",
-    components: { Header, Aside, Body, Client, Detail, List, Notice, NoticeDetail },
-
+    name: "NoticeView",
+    components: { Header, Aside, NoticeDetail },
     data() {
-        return {
-            tabs: "Body",
-            asideOpen: false
+        return {    
+            asideOpen: false,
+            id:''
         }
     },
 
     mounted() {
+
+        console.log("id:" + this.$route.params.id);
+        this.id = this.$route.params.id;
+
         this.checkloginStatus();
     },
 
@@ -44,21 +41,14 @@ export default {
                 this.$router.push('/');
             }
         },
-        // 사이드바에서 탭 클릭시 동적 컴포넌트 기능으로 컴포넌트 변경
-        update_body(e) {
-            this.tabs = e;
-        },
-
-        update_home(e) {
-            this.tabs = e;
-        },
 
         toggle_aside() {
             this.asideOpen = !this.asideOpen;
-        },
+        }
     }
-}   
+}
 </script>
+
 <style scoped>
 .header {
     z-index: 4;
@@ -103,3 +93,6 @@ export default {
     z-index: 4;
 }
 </style>
+
+
+noticeView.vue
