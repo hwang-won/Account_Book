@@ -1,16 +1,17 @@
 <template>
     <div>
         <Graph/>
-        <h3>바디입니다(최근 5개 리스트만 추가)</h3>
+        <RecentList/>
     </div>
 </template>
 
 <script>
 import Graph from "@/components/body/graph.vue"
+import RecentList from "@/components/body/recentList.vue";
 
 export default {
     name: "Body",
-    components : {Graph}
+    components : {Graph, RecentList}
 }
 </script>
 

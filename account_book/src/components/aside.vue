@@ -26,13 +26,19 @@ export default{
             tab:"Body"
        } 
     },
+    props : {create_tab : String},
     created(){
+        this.tab = this.create_tab
         this.$emit("tab_value", this.tab)
     },
     methods:{
         changeTab(name){
-            this.tab = name;
-            this.$emit("tab_value", this.tab)
+            if (this.$route.path != "/main"){
+                this.$router.push("/main")
+            } else{
+                this.tab = name;
+                this.$emit("tab_value", this.tab)
+            }
         }
     }
 }

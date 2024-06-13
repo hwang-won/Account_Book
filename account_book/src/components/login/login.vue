@@ -1,31 +1,29 @@
 <template>
-    <div>
-        <h1>로그인</h1>
+    <div class="loginBox">
+        <h1>A_B</h1>
         <br />
         <!-- login화면 -->
-        <table border="1">
+        <table border="1" class="loginTable">
             <tr>
-                <td>ID</td>
                 <td>
-                    <input v-model="id" placeholder="id" size="20" />
+                    <input type="text" v-model="id" placeholder="아이디" size="20" />
                 </td>
             </tr>
             <tr>
-                <td>PW</td>
                 <td>
-                    <input type="password" v-model="pw" placeholder="pw" size="20" />
+                    <input type="password" v-model="pw" placeholder="비밀번호" size="20" />
                 </td>
             </tr>
             <tr>
                 <td colspan="2">
-                    <button v-on:click="login">로그인</button>
+                    <button v-on:click="login" class="loginBtn">로그인</button>
                 </td>
             </tr>
             <tr>
                 <td colspan="2">
-                    <a :href="'/id_search'">ID 찾기 |</a>
-                    <a :href="'/pw_search'"> PW 찾기 |</a>
-                    <a :href="'/regi'"> 회원 가입</a>
+                    <a :href="'/id_search'">아이디 찾기</a>
+                    <a :href="'/pw_search'">비밀번호 찾기</a>
+                    <a :href="'/regi'">회원가입</a>
                 </td>
             </tr>
         </table>
@@ -98,4 +96,67 @@ export default {
 }
 </script>
 
-<style></style>
+<style scoped>
+    h1 {
+        padding-top: 60px;
+    }
+    .loginBox   {
+        width: 700px;
+        height: 500px;
+        background-color: rgb(255, 245, 198);
+        border-radius: 50px;
+    }
+    .loginTable {
+        width: 100%;
+        height: 250px;
+        border: 1px solid rgb(255, 245, 198);
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        border: 1px solid rgb(255, 245, 198);
+        padding: 8px;
+    }
+    input[type=text] {
+        width: 400px;
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 5px;
+        box-sizing: border-box;
+        border: 1px solid rgb(173, 173, 173);
+    }
+    input[type=text]:focus {
+        outline: none;
+        border: 1px solid black;
+    }
+    input[type=password] {
+        width: 400px;
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 5px;
+        box-sizing: border-box;
+        border: 1px solid rgb(173, 173, 173);
+    }
+    input[type=password]:focus {
+        outline: none;
+        border: 1px solid black;
+    }
+    .loginBtn {
+        width: 400px;
+        border-radius: 5px;
+        background-color: rgb(255, 204, 0);
+        font-size: 20px;
+    }
+    td a {
+        font-size: 16px;
+        color: rgb(146, 146, 146);
+        padding: 10px;
+    }
+    td a:hover {
+        font-weight: 600;
+        color: rgb(0, 0, 0);
+    }
+
+</style>

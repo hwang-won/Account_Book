@@ -4,13 +4,9 @@ import LoginView from '@/views/loginView.vue';
 import Regi from '@/components/login/regi.vue';
 import Id_search from '@/components/login/id_search.vue';
 import Pw_search from '@/components/login/pw_search.vue';
-
-import Profile from '@/components/login/profile.vue';
-
-
-import Detail from '@/components/body/detail.vue';
+import ProfileView from '@/views/profileView.vue';
+import ListDetailView from '@/views/listDetailView.vue';
 import MainView from '@/views/mainView.vue';
-import NoticeDetail from '@/components/body/noticeDetail.vue';
 
 const routes = [
 
@@ -42,7 +38,7 @@ const routes = [
 
     },
 
-    // MainView
+    // MainView(body, list, notice, FAQ)
     {
         path: '/main',
         name: "MainView",
@@ -52,21 +48,16 @@ const routes = [
     // MainView -> list.vue -> detail.vue
     {
         path: '/detail/:jsonType/:id',
-        name: 'Detail',
-        component: Detail
+        name: 'ListDetailView',
+        component: ListDetailView
     },
 
-    //추가
+    // MainView -> header.vue -> profile.vue -> profileEdit
     {
         path:'/profile',
         name: 'Profile',
-        component: Profile
+        component: ProfileView
 
-    },
-    {
-        path:'/noticeDetail/:id',
-        name: 'NoticeDetail',  
-        component: NoticeDetail
     }
     
 ];

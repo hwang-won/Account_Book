@@ -1,6 +1,4 @@
 <template>
-    <Header/>
-    <Aside/>
     <div>
         <div>
             <table style="width: 500px;" border="1">
@@ -52,13 +50,10 @@
 
 <script>
 
-import Header from "@/components/header.vue";
-import Aside from "@/components/aside.vue";
 import axios from "axios"
 
 export default {
     name: "Detail",
-    components:{Header, Aside},
     data(){
         return {
             // 상세 페이지 받아올 값들
@@ -103,8 +98,8 @@ export default {
 
                     this.user_id = response.data[0].user_id
                     this.money = response.data[0].money
-                    this.create_date = response.data[0].create_date;
-                    this.update_date = response.data[0].update_date;
+                    this.create_date = response.data[0].create_date.replace('T', ' ');
+                    this.update_date = response.data[0].update_date.replace('T', ' ');
                     this.category = response.data[0].category;
                     this.memo = response.data[0].memo;
 
