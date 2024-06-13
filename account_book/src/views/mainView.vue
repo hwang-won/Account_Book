@@ -13,7 +13,7 @@ import Body from '@/components/body/body.vue';
 import Client from '@/components/body/client.vue';
 import Detail from '@/components/body/detail.vue';
 import List from '@/components/body/list.vue';
-import Notice from '@/components/body/notice.vue'
+import Notice from '@/components/body/notice.vue';
 
 export default {
     name: "MainView",
@@ -49,7 +49,8 @@ export default {
             this.tabs = e;
         },
         startLoginCheckTimer() {
-            this.checkLoginInterval = setInterval(this.checkLoginStatus, 5000); // 5초마다 로그인 상태 확인
+            this.checkLoginInterval = setInterval(this.checkLoginStatus, 5000); // 5초
+            
         },
         stopLoginCheckTimer() {
             if (this.checkLoginInterval) {
@@ -62,4 +63,5 @@ export default {
 </script>
 
 <style>
+
 </style>

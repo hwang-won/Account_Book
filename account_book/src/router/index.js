@@ -10,6 +10,7 @@ import Profile from '@/components/login/profile.vue';
 
 import Detail from '@/components/body/detail.vue';
 import MainView from '@/views/mainView.vue';
+import NoticeDetail from '@/components/body/noticeDetail.vue';
 
 const routes = [
 
@@ -61,6 +62,11 @@ const routes = [
         name: 'Profile',
         component: Profile
 
+    },
+    {
+        path:'/noticeDetail/:id',
+        name: 'NoticeDetail',  
+        component: NoticeDetail
     }
     
 ];
