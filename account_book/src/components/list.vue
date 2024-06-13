@@ -2,6 +2,7 @@
     <div class="wrap">
         <h1>list</h1>
         <div class="filter">
+            
             <!-- 날짜선택 -->
             <div>
                 <label for="startDate">시작일</label>
