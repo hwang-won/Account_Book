@@ -7,7 +7,6 @@
 <script>
 export default {
     name: "Notice"
->>>>>>> origin/feature/lee
 }
 </script>
 

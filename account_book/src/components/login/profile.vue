@@ -49,7 +49,6 @@
         <br>
         <button @click="goMain">메인페이지로</button>
         <button @click="editButton">{{ editMode ? '저장하기' : '수정하기' }}</button>
->>>>>>> origin/feature/lee
     </div>
 </template>
 
@@ -123,5 +122,4 @@ export default {
 </script> 
 
 <style lang="">
->>>>>>> origin/feature/lee
 </style>

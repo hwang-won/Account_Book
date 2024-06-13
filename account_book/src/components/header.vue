@@ -1,6 +1,6 @@
 <template>
     <div class="button-container">
-        <button id="menu" @click="toggleAside">메뉴</button>
+        <button id="menu" @click="toggleSidebar">메뉴</button>
         <Aside v-if="asideOpen"/>
 
         <button id="home" @click="clickHome">홈(로고)</button>
@@ -11,28 +11,26 @@
 </template>
 
 <script>
-import Aside from '@/components/aside.vue';
 import Profile from '@/components/login/profile.vue';
 
     export default {
         data(){
             return{
-                asideOpen: false,
                 profileOpen: false
             };
         },
         components:{
-            Aside, Profile
+            Profile
         },
         methods:{
             toggleSidebar(){
-                this.asideOpen = !this.asideOpen;
+                this.$emit('toggle-sidebar');
             },
             toggleProfile(){
                 this.profileOpen = !this.profileOpen;
             },
             clickHome(){
-                this.$router.push("/main");
+                this.$emit('change-tab','Body');
             }
         }
     }

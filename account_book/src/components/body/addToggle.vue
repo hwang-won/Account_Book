@@ -2,7 +2,7 @@
     <div>
       <button @click="toggleForm" class="toggle-button">+</button>
       <div v-if="formVisible" class="transaction-form">
-        <h2>신규 기록 등록</h2>
+        <h2>신규 가계부 작성</h2>
         <form @submit.prevent="submitForm">
           <label for="type">유형:</label>
           <select v-model="type" id="type">
@@ -31,7 +31,7 @@
       return {
         formVisible: false,
         type: 'Plus',  
-        date: new Date(),
+        date: new Date().toISOString().substring(0, 10),
         amount: '',  
         category: '',  
         memo: ''  
@@ -47,7 +47,7 @@
         const userId = user ? user.user_id : null;
 
         let params = {
-          id: Date.now(),
+          id: String(Date.now()),
           user_id: userId, 
           money: parseInt(this.amount),
           create_date: this.date,
@@ -62,8 +62,8 @@
             .then(response=> {
                 this.resetForm();
                 this.formVisible = false;
+                // 부모 컴포에 데이터를 보내는 방식으로 변경 
                 this.$emit('add-transaction', { type: this.type, transaction: response.data });
-                this.$router.push('/list');
             })
             .catch(error => {
                 console.error(error);
@@ -71,7 +71,7 @@
       },
       resetForm() {
         this.type ='Plus';
-        this.date ='';
+        this.date = new Date().toISOString().substring(0, 10),
         this.amount='';
         this.category='';
         this.memo='';

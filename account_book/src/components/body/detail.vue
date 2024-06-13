@@ -1,9 +1,6 @@
 <template>
-<<<<<<< HEAD
-=======
     <Header/>
     <Aside/>
->>>>>>> origin/feature/lee
     <div>
         <div>
             <table style="width: 500px;" border="1">
