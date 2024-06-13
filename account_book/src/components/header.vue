@@ -1,70 +1,95 @@
 <template>
-    <div class="button-container">
-        <button id="menu" @click="toggleSidebar">메뉴</button>
-        <Aside v-if="asideOpen"/>
-
-        <button id="home" @click="clickHome">홈(로고)</button>
-        
-        <button id="profile" @click="toggleProfile">프로필</button>
-        <Profile v-if="profileOpen"/>
+    <div class="main-container">
+        <Header class="header" @toggle-sidebar="toggleSidebar" @change-tab="update_body"/>
+        <Aside v-if="asideOpen" @tab_value="update_body" class="aside" />
+            <div class="content">
+            <component :is="tabs" ref="listComponent"></component>
+            </div>
+        <Toggle class="toggle" @add-transaction="handleAddTransaction"/>
     </div>
 </template>
 
 <script>
-import Profile from '@/components/login/profile.vue';
+import Header from '@/components/header.vue';
+import Aside from '@/components/aside.vue';
+import Body from '@/components/body/body.vue';
+import Client from '@/components/body/client.vue';
+import Detail from '@/components/body/detail.vue';
+import List from '@/components/body/list.vue';
+import Notice from '@/components/body/notice.vue';
+import Toggle from '@/components/body/addToggle.vue';
 
-    export default {
-        data(){
-            return{
-                profileOpen: false
-            };
+export default {
+    name: "MainView",
+    components:{Header, Aside, Body, Client, Detail, List, Notice,Toggle},
+
+    data(){
+        return{
+            tabs:"Body",
+            asideOpen: false
+        }
+    },
+
+    mounted(){
+        this.checkloginStatus();
+    },
+
+    methods:{
+        checkloginStatus() {
+            const value = localStorage.getItem('loginKey'); 
+            if (value) {
+                console.log('LocalStorage에 값이 있습니다:', value);
+                //this.$router.push('/main');
+            } else {
+                console.log('LocalStorage에 값이 없습니다.');
+                this.$router.push('/');
+            }
         },
-        components:{
-            Profile
+        update_body(e){
+            this.tabs = e;
         },
-        methods:{
-            toggleSidebar(){
-                this.$emit('toggle-sidebar');
-            },
-            toggleProfile(){
-                this.profileOpen = !this.profileOpen;
-            },
-            clickHome(){
-                this.$emit('change-tab','Body');
+        toggleSidebar() {
+            this.asideOpen = !this.asideOpen;
+        },
+        // 현재 탭이 List 일때 데이터를 바로 반응형으로 전달 
+        handleAddTransaction(transactionData) {
+            if (this.tabs === "List" && this.$refs.listComponent) {
+            this.$refs.listComponent.handleAddTransaction(transactionData);
             }
         }
     }
+}
 </script>
-
 <style>
-.button-container {
-    margin-top: 0;
-    width: 100%;
-    height: 42px;
-    position: fixed;
-    left: 0;
-    right:0;
-    top: 0;
+.header{
+    z-index:4;
+}
+.main-container {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    background-color: #FFD700; 
-    padding: 10px;
-    
+    margin-top: 0;
+    height: 100%;
+    z-index: 1;
 }
 
-#menu {
-    position: fixed;
-    margin-left: 10px;
-    left: 10px
+.content {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 2;
+    width: 1500px;
+    height:1500px;
 }
-
-#home {
+.aside {
     position: fixed;
-    margin: 0 auto;
+    top: 0;
+    left: 0;
+    z-index: 3; /* 컨텐트 보다 앞에 나오게 */ 
 }
-
-#profile {
-    position: fixed;
-    margin-right: 10px;
-    right: 10px;
+.toggle{
+    position:fixed;
+    z-index: 4;
 }
 </style>
