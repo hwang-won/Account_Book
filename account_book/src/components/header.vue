@@ -1,6 +1,7 @@
 <template>
     <div class="button-container">
         <button id="menu" @click="toggleSidebar">메뉴</button>
+        <Sidebar v-if="sideBarOpen"/>
 
         <button id="home" @click="clickHome">홈(로고)</button>
         
@@ -10,26 +11,28 @@
 </template>
 
 <script>
-import Profile from '@/components/login/profile.vue';
+import Sidebar from './aside.vue';
+import Profile from './login/profile.vue';
 
     export default {
         data(){
             return{
+                sideBarOpen: false,
                 profileOpen: false
             };
         },
         components:{
-            Profile
+            Sidebar,Profile
         },
         methods:{
             toggleSidebar(){
-                this.$emit('toggle-sidebar');
+                this.sideBarOpen = !this.sideBarOpen;
             },
             toggleProfile(){
                 this.profileOpen = !this.profileOpen;
             },
             clickHome(){
-                this.$emit('change-tab','Body');
+                this.$router.push("/mainView");
             }
         }
     }
@@ -47,6 +50,7 @@ import Profile from '@/components/login/profile.vue';
     align-items: center;
     background-color: #FFD700; 
     padding: 10px;
+    
 }
 
 #menu {
@@ -56,9 +60,8 @@ import Profile from '@/components/login/profile.vue';
 }
 
 #home {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    position: fixed;
+    margin: 0 auto;
 }
 
 #profile {
