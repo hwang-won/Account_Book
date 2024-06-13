@@ -43,15 +43,6 @@
   ],
   "Plus": [
     {
-      "id": "2",
-      "user_id": "user_1",
-      "money": 2400,
-      "create_date": "2016-02-24T10:30",
-      "update_date": "2024-02-24T10:30",
-      "category": "용돈",
-      "memo": "할머니께서 주신 용돈"
-    },
-    {
       "id": "3",
       "user_id": "user_1",
       "money": 3000,
@@ -68,15 +59,6 @@
       "update_date": "2024-08-10T09:20",
       "category": "상여금",
       "memo": "회사에서 지급한 상여금"
-    },
-    {
-      "id": "5",
-      "user_id": "user_1",
-      "money": 2500,
-      "create_date": "2016-10-25T13:55",
-      "update_date": "2024-10-25T13:55",
-      "category": "주식 수익",
-      "memo": "주식 투자로 얻은 이익"
     },
     {
       "id": "6",
