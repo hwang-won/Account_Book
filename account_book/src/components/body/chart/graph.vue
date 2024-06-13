@@ -39,28 +39,79 @@ export default {
 </script>
 
 <style scoped>
-    h2 {
-    text-align: center;
-    }
-    .graph-container {
+  .graph-container {
     display: flex;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    flex: 1;
-    justify-items: center;
-    align-items: center;
-    transition: margin-left 0.3s;
-    }
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+    width: 1600px;
+  }
 
-    .chart-item {
-    width: 100%;
-    height: 100%;
+  .chart-item {
     background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 30%;
+    height: 300px; 
     transition: all 0.3s ease;
+  }
+
+  @media (max-width: 1500px) {
+    .graph-container {
+      flex-direction: column;
+      align-items: center;
+      margin-top: 30px;
+      margin-bottom: 40px;
+      gap: 80px;
     }
+    .chart-item {
+      width: 30%;
+      height: 240px; 
+    }
+  }
+
+  @media (max-width: 1340px) {
+    .graph-container {
+      flex-direction: column;
+      align-items: center;
+      gap: 120px;
+      margin-top: 40px;
+      margin-bottom: 60px;
+    }
+    .chart-item {
+      width: 30%;
+      height: 200px; 
+    }
+  }
+
+  @media (max-width: 950px) {
+    .graph-container {
+      flex-direction: column;
+      align-items: center;
+      gap: 170px;
+      margin-top: 70px;
+      margin-bottom: 90px;
+    }
+
+    .chart-item {
+      width: 50%; 
+      height: 150px;
+    }
+  }
+
+  @media (max-width: 435px) {
+    .graph-container {
+      flex-direction: column;
+      align-items: center;
+      margin-top: 90px;
+      margin-bottom: 120px;
+      gap: 200px;
+    }
+    .chart-item {
+      width: 80%;
+      height: 100px; 
+      margin-bottom: 20px;
+    }
+  }
 </style>
-  

@@ -62,60 +62,34 @@ import Aside from '@/components/aside.vue';
 </script>
 
 <style>
-.button-container {
-    margin-top: 0;
-    width: 100%;
-    height: 42px;
-    position: fixed;
-    left: 0;
-    right:0;
-    top: 0;
-    align-items: center;
-    background-color: #FFD700; 
-    padding: 10px;
-    
-}
+    .button-container {
+        margin-top: 0;
+        width: 100%;
+        height: 42px;
+        position: fixed;
+        left: 0;
+        right:0;
+        top: 0;
+        align-items: center;
+        background-color: #FFD700; 
+        padding: 10px;
+    }
 
-#menu {
-    position: fixed;
-    margin-left: 10px;
-    left: 10px
-}
+    #menu {
+        position: fixed;
+        margin-left: 10px;
+        left: 10px
+    }
 
-#home {
-    position: fixed;
-    margin: 0 auto;
-}
+    #home {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 
-#profile {
-    position: fixed;
-    margin-right: 10px;
-    right: 10px;
-}
-
-.profile-dropdown {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 120px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    right: 0;
-}
-
-.profile-dropdown button {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-}
-
-.profile-dropdown button:hover {
-    background-color: #ddd;
-}
-
-.profile-container:hover .profile-dropdown {
-    display: block;
-}
+    #profile {
+        position: fixed;
+        margin-right: 10px;
+        right: 10px;
+    }
 </style>

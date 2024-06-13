@@ -4,8 +4,11 @@ import LoginView from '@/views/loginView.vue';
 import Regi from '@/components/login/regi.vue';
 import Id_search from '@/components/login/id_search.vue';
 import Pw_search from '@/components/login/pw_search.vue';
+
 import ProfileView from '@/views/profileView.vue';
 import ListDetailView from '@/views/listDetailView.vue';
+import FullCalendar from '@/views/fullCalendar.vue';
+
 import MainView from '@/views/mainView.vue';
 
 const routes = [
@@ -57,6 +60,14 @@ const routes = [
         path:'/profile',
         name: 'Profile',
         component: ProfileView
+
+    },
+
+    // MainView -> fullCalender.vue
+    {
+        path:'/fullCalendar',
+        name: 'FullCalendar',
+        component: FullCalendar
 
     }
     

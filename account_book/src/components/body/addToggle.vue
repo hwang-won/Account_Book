@@ -10,7 +10,7 @@
             <option value="Minus">지출</option>
           </select>
           <label for="date">날짜:</label>
-            <input type="date" v-model="date" id="date" name="date"><br><br>
+            <input type="datetime-local" v-model="date" id="date" name="date"><br><br>
           <label for="amount">금액:</label>
             <input type="number" v-model="amount" id="amount" name="amount"><br><br>
           <label for="category">카테고리:</label>
@@ -21,66 +21,66 @@
         </form>
       </div>
     </div>
-  </template>
+</template>
   
-  <script>
-  import axios from 'axios';
+<script>
+import axios from 'axios';
 
-  export default {
-    data() {
-      return {
-        formVisible: false,
-        type: 'Plus',  
-        date: new Date().toISOString().substring(0, 10),
-        amount: '',  
-        category: '',  
-        memo: ''  
-        };
+export default {
+  data() {
+    return {
+      formVisible: false,
+      type: 'Plus',  
+      date: new Date().toISOString().substring(0, 10),
+      amount: '',  
+      category: '',  
+      memo: ''  
+      };
+  },
+  methods: {
+    toggleForm() {
+      this.formVisible = !this.formVisible;
     },
-    methods: {
-      toggleForm() {
-        this.formVisible = !this.formVisible;
-      },
-      submitForm() {
-        const userJsonString = localStorage.getItem("loginKey");
-        const user = userJsonString ? JSON.parse(userJsonString) : null;
-        const userId = user ? user.user_id : null;
+    submitForm() {
+      const userJsonString = localStorage.getItem("loginKey");
+      const user = userJsonString ? JSON.parse(userJsonString) : null;
+      const userId = user ? user.user_id : null;
 
-        let params = {
-          id: String(Date.now()),
-          user_id: userId, 
-          money: parseInt(this.amount),
-          create_date: this.date,
-          update_date: this.date,
-          category: this.category,
-          memo: this.memo
-        };
+      let params = {
+        id: String(Date.now()),
+        user_id: userId, 
+        money: parseInt(this.amount),
+        create_date: this.date,
+        update_date: this.date,
+        category: this.category,
+        memo: this.memo
+      };
 
-        const url = `http://localhost:3001/${this.type}?user_id=${user}`;
+      const url = `http://localhost:3001/${this.type}?user_id=${user}`;
 
-        axios.post(url,params)
-            .then(response=> {
-                this.resetForm();
-                this.formVisible = false;
-                // 부모 컴포에 데이터를 보내는 방식으로 변경 
-                this.$emit('add-transaction', { type: this.type, transaction: response.data });
-            })
-            .catch(error => {
-                console.error(error);
-            })
-      },
-      resetForm() {
-        this.type ='Plus';
-        this.date = new Date().toISOString().substring(0, 10),
-        this.amount='';
-        this.category='';
-        this.memo='';
-      }
+      axios.post(url,params)
+          .then(response=> {
+              this.resetForm();
+              this.formVisible = false;
+              // 부모 컴포에 데이터를 보내는 방식으로 변경 
+              this.$emit('add-transaction', { type: this.type, transaction: response.data });
+          })
+          .catch(error => {
+              console.error(error);
+          })
+    },
+    resetForm() {
+      this.type ='Plus';
+      this.date = new Date().toISOString().substring(0, 10),
+      this.amount='';
+      this.category='';
+      this.memo='';
     }
-  };
-  </script>
+  }
+};
+</script>
   
-  <style scoped>
+<style scoped>
 
   .toggle-button {
     position: fixed;
@@ -109,4 +109,4 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
-  </style>
+</style>

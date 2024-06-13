@@ -101,34 +101,32 @@ methods: {
 
 <style scoped>
     .chart-container {
-        position: relative;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 16px;
-        text-align: center;
-        height: auto;
-        width: 100%;
+    position: relative;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    width: 100%;
     }
 
     .chart-header {
-        margin-bottom: 8px;
-        text-align: left;
+    margin-bottom: 8px;
+    text-align: left;
+    width: 100%;
     }
 
     .chart-label {
-        font-size: 14px;
-        margin: 0;
-        color: #666;
+    font-size: 14px;
+    margin: 0;
+    color: #666;
     }
 
     .chart-total {
-        font-size: 24px;
-        margin: 4px 0;
-        font-weight: bold;
-    }
-
-    #incomeChart {
-        width: 100%;
-        height: 100%;
+    font-size: 24px;
+    margin: 4px 0;
+    font-weight: bold;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
     }
 </style>
