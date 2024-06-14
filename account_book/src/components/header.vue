@@ -4,7 +4,7 @@
             <p>메뉴</p>
         </div>
         <div class="box" @click="clickHome">
-            <p>홈(로고)</p>
+            <img src="@/assets/homeLogo.png" alt="홈 로고" />
         </div>
         <div class="profileBox box">
             <p class="profileBtn" @click="toggleProfile">프로필</p>
@@ -131,6 +131,11 @@ li {
 }
 .dropdown li:hover {
     background-color: #fff2a8;
+}
+
+img {
+    width: 150px;
+    height: auto;
 }
 </style>
 
