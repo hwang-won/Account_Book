@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="recent-container">
         <h1>Recent List</h1>
         <!-- 테이블 -->
         <div>
@@ -41,7 +41,7 @@ export default {
     computed: {
         // 최근 5개만
         recentContents() {
-            return this.contents.slice(0, 5); 
+            return this.contents.slice(0, 10); 
         }
     },
     mounted() {
@@ -96,14 +96,28 @@ export default {
         // 날짜에 t 없애기
         deleteT(data) {
             return data.replace('T', ' ');
+        },
+        handleAddTransaction({ type, transaction }) {
+            transaction.type = type === 'Plus' ? '수입' : '지출';
+            transaction.jsonType = type;
+            this.contents.unshift(transaction);
+            this.sortDate();
         }
     }
 };
 </script>
 
 <style scoped>
+.recent-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 table {
-    width: 800px;
+    width:1100px;
+    max-width: 1200px;
     border-collapse: collapse;
     border-radius: 10px;
     box-shadow:  0 0 0 1px #e0e0e0;
