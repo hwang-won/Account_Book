@@ -10,9 +10,6 @@
             <li @click="changeTab('Notice')" :class="{ checked: tab === 'Notice' }">
                 <p>공지사항</p>
             </li>
-            <li @click="changeTab('Client')" :class="{ checked: tab === 'Client' }">
-                <p>고객문의</p>
-            </li>
         </ul>
     </div>
 </template>

@@ -1,6 +1,6 @@
 <template>
     <div class="wrap">
-        <h1>list</h1>
+        <h1>거래내역</h1>
         <div class="filter">
             <!-- 날짜선택 -->
             <div>
@@ -146,6 +146,9 @@ export default {
 };
 </script>
 <style scoped>
+h1 {
+    margin-bottom: 50px;
+}
 .wrap {
     width: 1000px;
     margin: 0 auto;

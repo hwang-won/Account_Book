@@ -88,7 +88,7 @@ methods: {
     const options = {
         titleTextStyle: { fontSize: 20 },
         curveType: "function",
-        legend: { position: "bottom" },
+        legend: { position: "top" },
         chartArea: { width: "80%", height: "70%" },
     };
 

@@ -48,6 +48,9 @@ export default {
                 plusRes.data.forEach(item => {
                     item.type = '수입';
                     item.jsonType = 'Plus';
+                    if(this.user_id == item.user_id){
+                        this.contents.push(item);
+                    }
                 });
                 return axios.get("http://localhost:3001/Minus/",{params})
             })

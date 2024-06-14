@@ -3,8 +3,8 @@
     <button @click="toggleForm" class="toggle-button">+</button>
     <div :class="{'transaction-form': true, 'show': formVisible}">
       <div class="header">
-        <h2>가계부 작성</h2>
-        <img :src="`/image/bearKB.jpg`" alt="KB 귀요미 곰" class="header-image">
+        <h2>&emsp;&nbsp;가계부 작성</h2>
+        <img :src="`/image/bearKB.jpg`" alt="KB귀요미 곰" class="header-image">
       </div>
       <form @submit.prevent="submitForm">
         <div class="wrap">
@@ -143,10 +143,9 @@ export default {
 }
 
 .header-image {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 80px;
   object-fit: cover;
-  border-radius: 50%;
 }
 
 .wrap {
@@ -216,8 +215,3 @@ input[type="number"]:focus {
   background-color: #e6b800;
 }
 </style>
-
-
-
-
-
