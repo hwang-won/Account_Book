@@ -24,11 +24,10 @@ import Detail from '@/components/body/detail.vue';
 import List from '@/components/body/list.vue';
 import Notice from '@/components/body/notice.vue';
 import Toggle from '@/components/body/addToggle.vue';
-import RecentList from '@/components/body/recentList.vue';
 
 export default {
   name: "MainView",
-  components:{Header, Aside, Body, Client, Detail, List, Notice, Toggle, RecentList},
+  components: { Header, Aside, Body, Client, Detail, List, Notice, Toggle },
   data() {
     return {
       tabs: "Body",
@@ -41,35 +40,31 @@ export default {
       const value = localStorage.getItem("loginKey");
       if (value) {
         console.log("LocalStorage에 값이 있습니다:", value);
-        //this.$router.push('/main');
       } else {
         console.log("LocalStorage에 값이 없습니다.");
         this.$router.push("/");
       }
     },
-    // 사이드바에서 탭 클릭시 동적 컴포넌트 기능으로 컴포넌트 변경
     update_body(e) {
       this.tabs = e;
       this.create_tab = this.tabs;
     },
-
     update_home(e) {
       this.tabs = e;
       this.create_tab = this.tabs;
     },
-
     toggle_aside() {
       this.asideOpen = !this.asideOpen;
     },
     handleAddTransaction(transactionData) {
+      if (this.tabs === "Body" && this.$refs.listComponent) {
+        this.$refs.listComponent.addTransactionToRecentList(transactionData);
+      }
       if (this.tabs === "List" && this.$refs.listComponent) {
         this.$refs.listComponent.handleAddTransaction(transactionData);
       }
-      if (this.$refs.recentListComponent) {
-        this.$refs.recentListComponent.handleAddTransaction(transactionData);
-      }
-    },
-  },
+    }
+  }
 };
 </script>
 <style scoped>
