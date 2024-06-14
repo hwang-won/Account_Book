@@ -5,7 +5,6 @@
     <div class="loginBox">
         <h1>A_B</h1>
         <br />
-        <!-- login화면 -->
         <table border="1" class="loginTable">
             <tr>
                 <td>
@@ -47,7 +46,6 @@ export default {
     },
     methods: {
         login() {
-            // ID와 PW가 빈칸인지 검사
             if (!this.id || !this.pw) {
                 Swal.fire({
                     title: '아이디/비밀번호를 \n 정확히 입력해 주세요!',
@@ -58,7 +56,6 @@ export default {
                 })
                 return;
             }
-            // 사용자 정보 가져오기
             axios.get(`http://localhost:3001/User?user_id=${this.id}&password=${this.pw}`)
                 .then(res => {
                     if (res.data.length === 0) {
@@ -86,7 +83,6 @@ export default {
                             imageHeight: 150,
                             imageAlt: 'Custom image',
                         })
-                        // 로그인 성공한 경우 : 메인페이지로 이동(추가)
                         this.$router.push('/main');
                     } else {
                         Swal.fire({

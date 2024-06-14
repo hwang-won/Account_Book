@@ -1,6 +1,5 @@
 <template>
     <div class="recent-container">
-        <h1>Recent List</h1>
         <!-- 테이블 -->
         <div>
             <table>
@@ -49,6 +48,9 @@ export default {
                 plusRes.data.forEach(item => {
                     item.type = '수입';
                     item.jsonType = 'Plus';
+                    if(this.user_id == item.user_id){
+                        this.contents.push(item);
+                    }
                 });
                 return axios.get("http://localhost:3001/Minus/",{params})
             })
@@ -104,6 +106,7 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top: 50px;
 }
 table {
     width:1100px;

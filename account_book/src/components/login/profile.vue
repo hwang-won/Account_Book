@@ -1,54 +1,56 @@
 <template>
-    <div>
-        <h2>프로필 수정페이지</h2>
-    </div>
-    <div>
-        <h3>회원정보</h3>
-        <table border="1">
-            <tr>
-                <td>아이디</td>
-                <td>
-                    {{ userData.user_id }}
-                </td>
-            </tr>
-            <tr>
-                <td>비밀번호</td>
-                <td>
-                    <div v-if="editMode">
-                        <input v-model="pw" />
-                    </div>
-                    <div v-else>
-                        {{ userData.password }}
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>이름</td>
-                <td>
-                    <div v-if="editMode">
-                        <input v-model="name" />
-                    </div>
-                    <div v-else>
-                        {{ userData.name }}
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>이메일</td>
-                <td>
-                    <div v-if="editMode">
-                        <input v-model="email" />
-                    </div>
-                    <div v-else>
-                        {{ userData.email }}
-                    </div>
-                </td>
-            </tr>
-        </table>
-        <div v-if="editMode">* 아이디는 수정불가합니다.</div>
-        <br>
-        <button @click="goMain">메인페이지로</button>
-        <button @click="editButton">{{ editMode ? '저장하기' : '수정하기' }}</button>
+    <div class="loginBox">
+        <div>
+            <h1>프로필 수정페이지</h1>
+        </div>
+        <div>
+            <table>
+                <tr>
+                    <td>아이디</td>
+                    <td>
+                        {{ userData.user_id }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>비밀번호</td>
+                    <td>
+                        <div v-if="editMode">
+                            <input type="text" v-model="pw" />
+                        </div>
+                        <div v-else>
+                            {{ userData.password }}
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>이름</td>
+                    <td>
+                        <div v-if="editMode">
+                            <input type="text" v-model="name" />
+                        </div>
+                        <div v-else>
+                            {{ userData.name }}
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>이메일</td>
+                    <td>
+                        <div v-if="editMode">
+                            <input type="text" v-model="email" />
+                        </div>
+                        <div v-else>
+                            {{ userData.email }}
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <div class="btnBox"> 
+                <button @click="goMain">메인페이지로</button>
+                <button @click="editButton">{{ editMode ? '저장하기' : '수정하기' }}</button>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -118,5 +120,64 @@ export default {
 }
 </script> 
 
-<style lang="">
+<style scoped>
+h1 {
+    padding-top: 60px;
+}
+.loginBox   {
+    width: 700px;
+    background-color: rgb(255, 245, 198);
+    border-radius: 50px;
+}
+table {
+    width: 80%;
+    border-collapse: collapse;
+    border-radius: 5px;
+    border-style: hidden;  
+    margin: 0 auto;
+
+}
+th, td {
+    padding: 20px 0 20px 0;
+    border-right: none;
+    border-left: none;
+}
+tr > td {
+    width: 50%;
+    padding-left: 50px;
+}
+tr > td:nth-child(2) {
+    width: 50%;
+    padding-right: 50px;
+}
+th {
+    background-color: #ebebeb;
+}
+tr:hover {
+    background-color: rgb(255, 235, 146);
+    cursor: pointer;
+}
+input[type=text] {
+    width: 200px;
+    padding: 10px;
+    font-size: 12px;
+    border-radius: 5px;
+    margin: 0;
+    box-sizing: border-box;
+    border: 1px solid rgb(173, 173, 173);
+}
+input[type=text]:focus {
+    outline: none;
+    border: 1px solid black;
+}
+.btnBox {
+    display: flex;
+    justify-content: center;
+}
+button {
+    background-color: rgb(255, 204, 0);
+    margin: 0 20px 50px 20px;
+    color: rgb(65, 65, 65);
+    font-weight: 600;
+}
 </style>

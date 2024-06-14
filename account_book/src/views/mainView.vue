@@ -1,13 +1,8 @@
 <template>
   <div class="main-container">
     <Header class="header" @toggle_aside="toggle_aside" />
-    <Aside
-      class="aside"
-      v-if="asideOpen"
-      @tab_value="update_body"
-      @tab_home="update_home"
-      v-bind:create_tab="create_tab"
-    />
+    <Aside class="aside" v-if="asideOpen" @tab_value="update_body" @tab_home="update_home"
+      v-bind:create_tab="create_tab" />
     <div class="content" :class="{ 'content-with-aside': asideOpen }">
       <component :is="tabs" ref="listComponent"></component>
     </div>
@@ -33,7 +28,17 @@ export default {
       tabs: "Body",
       create_tab: "Body",
       asideOpen: false,
+      checkLoginInterval: null
     };
+  },
+
+  mounted() {
+    this.checkloginStatus();
+    this.startLoginCheckTimer();
+  },
+
+  beforeDestroy() {
+    this.stopLoginCheckTimer();
   },
   methods: {
     checkloginStatus() {
@@ -63,10 +68,22 @@ export default {
       if (this.tabs === "List" && this.$refs.listComponent) {
         this.$refs.listComponent.handleAddTransaction(transactionData);
       }
+    },
+    startLoginCheckTimer() {
+      console.log("로그인체크")
+      this.checkLoginInterval = setInterval(this.checkloginStatus, 5000); // 900000
+    },
+    stopLoginCheckTimer() {
+      if (this.checkLoginInterval) {
+        clearInterval(this.checkLoginInterval);
+        this.checkLoginInterval = null;
+      }
     }
+
   }
 };
 </script>
+
 <style scoped>
 .header {
   z-index: 4;
@@ -86,14 +103,14 @@ export default {
   align-items: center;
   padding: 20px;
   box-sizing: border-box;
-  width: 100%; 
-  max-width: 1500px; 
-  margin-left: 0; 
-  transition: margin-left 0.3s ease; 
+  width: 100%;
+  max-width: 1500px;
+  margin-left: 0;
+  transition: margin-left 0.3s ease;
 }
 
 .content-with-aside {
-  margin-left: 150px; 
+  margin-left: 150px;
 }
 
 .aside {
