@@ -26,10 +26,8 @@
         </div>
     </div>
 </template>
-
 <script>
 import axios from 'axios';
-
 export default {
     data() {
         return {
@@ -40,24 +38,26 @@ export default {
     computed: {
         // 최근 5개만
         recentContents() {
-            return this.contents.slice(0, 10); 
+            return this.contents.slice(0, 5);
         }
     },
     mounted() {
-        axios.get('http://localhost:3001/Plus')
+        let params = {"user_id" : this.user_id}
+        axios.get("http://localhost:3001/Plus/",{params})
             .then(plusRes => {
                 plusRes.data.forEach(item => {
                     item.type = '수입';
                     item.jsonType = 'Plus';
-                    this.contents.push(item);
                 });
-                return axios.get('http://localhost:3001/Minus');
+                return axios.get("http://localhost:3001/Minus/",{params})
             })
             .then(minusRes => {
                 minusRes.data.forEach(item => {
                     item.type = '지출';
                     item.jsonType = 'Minus';
-                    this.contents.push(item);
+                    if(this.user_id == item.user_id){
+                        this.contents.push(item);
+                    }
                 });
                 // 날짜 순 정렬
                 this.sortDate();
@@ -70,15 +70,6 @@ export default {
     methods: {
         // json 데이터를 날짜 순으로 정렬
         sortDate() {
-
-            this.contents.filter(content => {
-                if(this.user_id == content.user_id){
-                    return true
-                } else{
-                    return false
-                }
-            })
-
             this.contents.sort((a, b) => {
                 let A = new Date(a.create_date.replace('T', ' '));
                 let B = new Date(b.create_date.replace('T', ' '));
@@ -101,12 +92,10 @@ export default {
             transaction.jsonType = type;
             this.contents.unshift(transaction);
             this.sortDate();
-            this.$emit('recent-add-transaction', { type, transaction });
         }
     }
 };
 </script>
-
 <style scoped>
 .recent-container{
     width: 100%;
@@ -121,18 +110,24 @@ table {
     max-width: 1200px;
     border-collapse: collapse;
     border-radius: 10px;
-    box-shadow:  0 0 0 1px #e0e0e0;
-    border-style: hidden;   
+    box-shadow:  0 0 0 1px #E0E0E0;
+    border-style: hidden;
     text-align: left;
 }
 th, td {
-    border: 1px solid #cfcfcf;
+    border: 1px solid #CFCFCF;
     padding:12px;
     border-right: none;
     border-left: none;
 }
 tr:hover {
-    background-color: #ebebeb;
+    background-color: #EBEBEB;
     cursor: pointer;
 }
 </style>
+
+
+
+
+
+

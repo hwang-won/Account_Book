@@ -11,7 +11,6 @@
                 <label for="endDate">종료일</label>
                 <input type="date" id="endDate" v-model="endDate">
             </div>
-
             <!-- 카테고리 선택 -->
             <div>
                 <label for="category">카테고리</label>
@@ -20,7 +19,6 @@
                     <option v-for="category in categories" :key="category">{{ category }}</option>
                 </select>
             </div>
-            
             <!-- 수입/지출 선택 -->
             <div>
             <label for="type">수입/지출</label>
@@ -31,7 +29,6 @@
                 </select>
             </div>
         </div>
-
         <!-- 테이블 -->
         <table>
             <thead>
@@ -56,10 +53,8 @@
         </table>
     </div>
 </template>
-
 <script>
 import axios from 'axios';
-
 export default {
     data() {
         return {
@@ -71,11 +66,9 @@ export default {
             endDate: '',
         };
     },
-
     created(){
         this.user_id = JSON.parse(localStorage.getItem("loginKey")).user_id;
     },
-
     computed: {
         // 필터링
         filteredContents() {
@@ -88,7 +81,6 @@ export default {
                 if (this.typeFilter && content.type !== this.typeFilter) {
                     return false;
                 }
-
                 // 날짜 기간 필터링
                 if (this.startDate && this.endDate) {
                     let startDate = new Date(this.startDate);
@@ -96,12 +88,6 @@ export default {
                     let contentDate = new Date(content.create_date.replace('T', ' '));
                     return contentDate >= startDate && contentDate <= endDate;
                 }
-
-                // 아이디 필터링
-                if (this.user_id != content.user_id){
-                    return false;
-                }
-
                 return true;
             });
             return filtered;
@@ -113,7 +99,8 @@ export default {
     },
     // json server 값 받아오기
     mounted() {
-        axios.get('http://localhost:3001/Plus')
+        let params = {"user_id" : this.user_id}
+        axios.get('http://localhost:3001/Plus', {params})
             .then(plusRes => {
                 plusRes.data.forEach(item => {
                     item.type = '수입';
@@ -146,26 +133,18 @@ export default {
         },
         // 클릭한 행의 id, jsonType 데이터를 전달
         detailPage(content) {
-            this.$router.push({ 
-                name: 'ListDetailView', 
-                params: { id: content.id, jsonType: content.jsonType } 
+            this.$router.push({
+                name: 'ListDetailView',
+                params: { id: content.id, jsonType: content.jsonType }
             });
         },
         // 날짜에 t 없애기
         deleteT(data) {
             return data.replace('T', ' ');
-        },
-        handleAddTransaction({ type, transaction }) {
-            transaction.type = type === 'Plus' ? '수입' : '지출';
-            transaction.jsonType = type;
-            this.contents.unshift(transaction);
-            this.sortDate();
-            this.$emit('recent-add-transaction', { type, transaction });
         }
     }
 };
 </script>
-
 <style scoped>
 .wrap {
     width: 1000px;
@@ -174,7 +153,6 @@ export default {
     background-color: rgb(252, 250, 241);
     box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.2);
 }
-
 .filter {
     display: flex;
     justify-content: space-evenly;
@@ -184,19 +162,16 @@ export default {
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
-
 label {
     margin-right: 10px;
     font-weight: 600;
 }
-
 input[type="date"],
 select {
     padding: 6px;
     border-radius: 5px;
     border: 1px solid rgb(182, 182, 182);
 }
-
 table {
     width: 100%;
     background-color: white;
@@ -204,19 +179,18 @@ table {
     border-radius: 5px;
     box-shadow:  0 0 0 1px #e0e0e0;
     border-style: hidden;  
-
 }
 th, td {
-    border: 1px solid #cfcfcf;
+    border: 1px solid #CFCFCF;
     padding: 8px;
     border-right: none;
     border-left: none;
 }
 th {
-    background-color: #ebebeb;
+    background-color: #EBEBEB;
 }
 tr:hover {
-    background-color: #ebebeb;
+    background-color: #EBEBEB;
     cursor: pointer;
 }
 </style>
