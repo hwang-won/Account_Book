@@ -141,6 +141,13 @@ export default {
         // 날짜에 t 없애기
         deleteT(data) {
             return data.replace('T', ' ');
+        },
+        // 트랜잭션 객체
+        handleAddTransaction({ type, transaction }) {
+            transaction.type = type === 'Plus' ? '수입' : '지출';
+            transaction.jsonType = type;
+            this.contents.unshift(transaction);
+            this.sortDate();
         }
     }
 };

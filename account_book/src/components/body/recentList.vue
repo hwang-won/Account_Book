@@ -90,6 +90,7 @@ export default {
         deleteT(data) {
             return data.replace('T', ' ');
         },
+        // 트랜잭션 객체 
         handleAddTransaction({ type, transaction }) {
             transaction.type = type === 'Plus' ? '수입' : '지출';
             transaction.jsonType = type;

@@ -1,91 +1,95 @@
 <template>
-  <div>
-    <button @click="toggleForm" class="toggle-button">+</button>
-    <div :class="{'transaction-form': true, 'show': formVisible}">
-      <div class="header">
-        <h2>&emsp;&nbsp;가계부 작성</h2>
-        <img :src="`/image/bearKB.jpg`" alt="KB귀요미 곰" class="header-image">
-      </div>
-      <form @submit.prevent="submitForm">
-        <div class="wrap">
-          <div>
-            <select v-model="type" id="type">
-              <option value="Plus">수입</option>
-              <option value="Minus">지출</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <input type="datetime-local" v-model="date" id="date" name="date" class="custom-datetime" >
-          </div>
-          <div class="form-group">
-            <input type="number" v-model="amount" id="amount" name="amount" placeholder="금액">
-          </div>
-          <div class="form-group">
-            <input type="text" v-model="category" id="category" name="category" placeholder="카테고리">
-          </div>
-          <div class="form-group">
-            <input type="text" v-model="memo" id="memo" name="memo" placeholder="메모">
-          </div>
+    <div>
+          <button @click="toggleForm" class="toggle-button">+</button>
+              <div :class="{'transaction-form': true, 'show': formVisible}">
+              <div class="header">
+                  <h2>&emsp;&nbsp;가계부 작성</h2>
+                  <img :src="`/image/bearKB.jpg`" alt="KB귀요미 곰" class="header-image">
+              </div>
+              <form @submit.prevent="submitForm">
+                  <div class="wrap">
+                      <div>
+                          <select v-model="type" id="type">
+                              <option value="Plus">수입</option>
+                              <option value="Minus">지출</option>
+                          </select>
+                      </div>
+                      <div class="form-group">
+                          <input type="datetime-local" v-model="date" id="date" name="date" class="custom-datetime" >
+                      </div>
+                      <div class="form-group">
+                          <input type="number" v-model="amount" id="amount" name="amount" placeholder="금액">
+                      </div>
+                      <div class="form-group">
+                          <input type="text" v-model="category" id="category" name="category" placeholder="카테고리">
+                      </div>
+                          <div class="form-group">
+                              <input type="text" v-model="memo" id="memo" name="memo" placeholder="메모">
+                          </div>
+                      </div>
+                  <button class="Btn" type="submit">등록</button>
+            </form>
         </div>
-        <button class="Btn" type="submit">등록</button>
-      </form>
     </div>
-  </div>
 </template>
 
 <script>
 import axios from 'axios';
 
 export default {
-  data() {
-    return {
-      formVisible: false,
-      type: 'Plus',  
-      date: new Date().toISOString().substring(0, 10),
-      amount: '',  
-      category: '',  
-      memo: ''  
-      };
-  },
-  methods: {
-    toggleForm() {
-      this.formVisible = !this.formVisible;
+    data() {
+        return {
+            formVisible: false,
+            type: 'Plus',  
+            date: new Date().toISOString().substring(0, 10),
+            amount: '',  
+            category: '',  
+            memo: ''  
+        };
     },
-    submitForm() {
-      const userJsonString = localStorage.getItem("loginKey");
-      const user = userJsonString ? JSON.parse(userJsonString) : null;
-      const userId = user ? user.user_id : null;
+    methods: {
+        // 토글 버튼으로 폼을 확인/숨김
+        toggleForm() {
+          this.formVisible = !this.formVisible;
+        },
+        // 폼 데이터 전송 (비동기)
+        submitForm() {
+          const userJsonString = localStorage.getItem("loginKey");
+          const user = userJsonString ? JSON.parse(userJsonString) : null;
+          const userId = user ? user.user_id : null;
+          let params = {
+              id: String(Date.now()),
+              user_id: userId, 
+              money: parseInt(this.amount),
+              create_date: this.date,
+              update_date: this.date,
+              category: this.category,
+              memo: this.memo
+          };
+          const url = `http://localhost:3001/${this.type}?user_id=${user}`;
 
-      let params = {
-        id: String(Date.now()),
-        user_id: userId, 
-        money: parseInt(this.amount),
-        create_date: this.date,
-        update_date: this.date,
-        category: this.category,
-        memo: this.memo
-      };
-
-      const url = `http://localhost:3001/${this.type}?user_id=${user}`;
-
-      axios.post(url,params)
-          .then(response=> {
-              this.resetForm();
-              this.formVisible = false;
-              this.$emit('add-transaction', { type: this.type, transaction: response.data });
-          })
-          .catch(error => {
-              console.error(error);
-          })
-    },
-    resetForm() {
-      this.type ='Plus';
-      this.date = new Date().toISOString().substring(0, 10),
-      this.amount='';
-      this.category='';
-      this.memo='';
+          // 폼 데이터 post 요청
+          axios.post(url,params)
+              .then(response=> {
+                // 성공 시 폼 초기화 및 숨김 
+                  this.resetForm();
+                  this.formVisible = false;
+                  this.$emit('add-transaction', { type: this.type, transaction: response.data });
+                }
+              )
+              .catch(error => {
+                  console.error(error);
+              })
+        },
+        // 폼 초기 상태로 리셋 
+        resetForm() {
+            this.type ='Plus';
+            this.date = new Date().toISOString().substring(0, 10),
+            this.amount='';
+            this.category='';
+            this.memo='';
+        }
     }
-  }
 };
 </script>
 

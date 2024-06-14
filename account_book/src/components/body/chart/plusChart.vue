@@ -1,101 +1,98 @@
 <template>
-    <div class="chart-container">
-      <div class="chart-header">
-        <p class="chart-label">월간 수입</p>
-        <p class="chart-total">{{ totalDeposit.toLocaleString() }} \</p>
-      </div>
-      <div ref="incomeChart"></div>
+  <div class="chart-container">
+    <!-- 차트 총 수입 표시 -->
+    <div class="chart-header">
+      <p class="chart-label">월간 수입</p>
+      <p class="chart-total">{{ totalDeposit.toLocaleString() }} \</p>
     </div>
-  </template>
-  
+    <!-- 차트 구현 부분 -->
+    <div ref="incomeChart"></div>
+  </div>
+</template>
+
 <script>
 import axios from "axios";
 
 export default {
-data() {
-    return {
-    chartData: [],
-    totalDeposit: 0,
-    };
-},
-async mounted() {
-    const user = JSON.parse(localStorage.getItem("loginKey"));
-    if (user) {
-    await this.fetchChartData(user.user_id);
-    }
-    google.charts.load("current", { packages: ["corechart"] });
-    google.charts.setOnLoadCallback(this.drawChart.bind(this));
-},
-methods: {
-    async fetchChartData(userId) {
-    try {
-        const response = await axios.get(
-        `http://localhost:3001/Plus?user_id=${userId}`
-        );
-        const deposits = response.data;
-        const plusData = deposits.filter(function(deposit) {
-        const year = new Date(deposit.update_date).getFullYear();
-        return year === 2024;
-        });
+    data() {
+        return {
+          chartData: [],
+          totalDeposit: 0,
+        };
+    },
+    async mounted() {
+        // 사용자 정보에서 차트에 필요한 정보 가져오기 
+        const user = JSON.parse(localStorage.getItem("loginKey"));
+        if (user) {
+          await this.fetchChartData(user.user_id);
+        }
 
-        const monthlyData = plusData.reduce(function (acc, deposit) {
-        const month = new Date(deposit.update_date).getMonth() + 1;
-        acc[month] = (acc[month] || 0) + deposit.money;
-        return acc;
-        }, {});
+        // Google Charts 로드 
+        google.charts.load("current", { packages: ["corechart"] });
+        google.charts.setOnLoadCallback(this.drawChart.bind(this));
+    },
+    methods: {
+        async fetchChartData(userId) {
+        try {
+            // 서버에서 데이터 가져오기
+            const response = await axios.get(
+            `http://localhost:3001/Plus?user_id=${userId}`
+            );
+            const deposits = response.data;
 
-        this.chartData = Object.entries(monthlyData).map(function ([
-        month,
-        amount,
-        ]) {
-        return [parseInt(month), amount];
-        });
+            // 2024년 데이터 필터링
+            const plusData = deposits.filter(function (deposit) {
+              const year = new Date(deposit.update_date).getFullYear();
+              return year === 2024;
+            });
 
-        this.totalDeposit = Object.values(monthlyData).reduce(function (
-        acc,
-        amount
-        ) {
-        return acc + amount;
+            // 월별 데이터 집계
+            const monthlyData = plusData.reduce(function (acc, deposit) {
+              const month = new Date(deposit.update_date).getMonth() + 1;
+              acc[month] = (acc[month] || 0) + deposit.money;
+              return acc;
+            }, {});
+
+            // 차트 데이터 형식으로 변환 
+            this.chartData = Object.entries(monthlyData).map(([month, amount]) => [
+            parseInt(month),
+            amount,
+            ]);
+
+            this.totalDeposit = Object.values(monthlyData).reduce(function 
+            (acc, amount) { return acc + amount; }, 0);
+          } catch (error) {
+            console.error("수입 차트 데이터 불러오기 실패", error);
+            }
+          },
+        drawChart() {
+          const data = new google.visualization.DataTable();
+          // 차트에 컬럼 추가
+          data.addColumn("string", "Month");
+          data.addColumn("number", "수입");
+
+          const monthNames = [
+                    "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"
+          ];
+
+          // 차트 데이터 추가
+          this.chartData.forEach(function ([month, amount]) {
+            data.addRow([monthNames[month - 1] + "월", amount]);
+          });
+
+          // 차트 세부 속성값 설정
+          const options = {
+            titleTextStyle: { fontSize: 20 },
+            curveType: "function",
+            legend: { position: "top" },
+            chartArea: { width: "80%", height: "70%" },
+          };
+
+          const chart = new google.visualization.LineChart(this.$refs.incomeChart);
+          //차트 그리기
+          chart.draw(data, options);
         },
-        0);
-    } catch (error) {
-        console.error("수입 차트 데이터 불러오기 실패", error);
-    }
     },
-    drawChart() {
-    const data = new google.visualization.DataTable();
-    data.addColumn("string", "Month");
-    data.addColumn("number", "수입");
-
-    const monthNames = [
-        "01",
-        "02",
-        "03",
-        "04",
-        "05",
-        "06",
-        "07",
-        "08",
-        "09",
-        "10",
-        "11",
-        "12",
-    ];
-    this.chartData.forEach(function ([month, amount]) {
-        data.addRow([monthNames[month - 1] + "월", amount]);
-    });
-
-    const options = {
-        titleTextStyle: { fontSize: 20 },
-        curveType: "function",
-        legend: { position: "top" },
-        chartArea: { width: "80%", height: "70%" },
-    };
-
-    const chart = new google.visualization.LineChart(this.$refs.incomeChart);
-    chart.draw(data, options);
-    },
-},
 };
 </script>
 
@@ -125,8 +122,8 @@ methods: {
   font-size: 24px;
   margin: 4px 0;
   font-weight: bold;
-  white-space: nowrap; 
-  overflow: hidden; 
-  text-overflow: ellipsis; 
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 </style>
