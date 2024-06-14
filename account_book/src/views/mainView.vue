@@ -60,36 +60,70 @@ export default {
     }
 }
 </script>
-<style>
-.header{
-    z-index:4;
-}
-.main-container {
+<style scoped>
+  .toggle-button {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    background-color: #ffcc00;
+    color: white;
+    border: none;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 40px;
+    padding: 0 0 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .transaction-form {
+    position: fixed;
+    bottom: 120px;
+    right: 20px;
+    width: 300px;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .wrap {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin-top: 0;
-    height: 100%;
-    z-index: 1;
+  }
+
+input[type="date"],
+select {
+    padding: 6px;
+    border-radius: 5px;
+    border: 1px solid rgb(182, 182, 182);
+    margin-top: 16px;
 }
 
-.content {
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-    box-sizing: border-box;
-    z-index: 2;
-    width: 1500px;
-    height:1500px;
+input[type=text], input[type=number] {
+  width: 200px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  border: 1px solid rgb(173, 173, 173);
 }
-.aside {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 3; /* 컨텐트 보다 앞에 나오게 */ 
+input[type=text]:focus, input[type=number]:focus {
+  outline: none;
+  border: 1px solid black;
 }
-.toggle{
-    position:fixed;
-    z-index: 4;
+
+.Btn {
+    width: 100px;
+    border-radius: 5px;
+    background-color: rgb(255, 204, 0);
+    color: rgb(66, 66, 66);
+    font-size: 16px;
+    font-weight: 600;
 }
 </style>
