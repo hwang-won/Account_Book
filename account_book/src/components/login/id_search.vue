@@ -1,4 +1,7 @@
 <template lang="">
+    <div>
+        <img src="@/../public/image/homeLogo.png" alt="홈 로고" />
+    </div>
     <div class="loginBox">
         <h1>아이디 찾기</h1>
         <br>
@@ -128,4 +131,8 @@ export default {
         font-weight: 600;
         color: rgb(0, 0, 0);
     }
+    img {
+    width: 300px;
+    height: auto;
+}
 </style>
