@@ -34,7 +34,6 @@ export default {
         }
     },
     computed: {
-        // 날짜 내림차순 정렬
         sortDate() {
             return this.noticeList.sort((a, b) => new Date(b.create_date) - new Date(a.create_date));
         }

@@ -5,7 +5,6 @@
     <div class="loginBox">
         <h1>비밀번호 찾기</h1>
         <br>
-        <!--입력 폼 -->
         <table border="1" class="loginTable">
             <tr>
                 <td>
@@ -67,12 +66,6 @@ export default {
                     if (serverData.user_id === this.id && serverData.name === this.name && serverData.email === this.email) {
                         this.resultPassword = serverData.password
                         alert("비밀번호 찾기 성공! 회원님의 비밀번호는 : " + this.resultPassword + " 입니다");
-                        // console.log("회원님의 Password :",this.resultPassword);
-                        //alert(serverData.user_id + "님 환영합니다");
-
-                        // this.email = '';
-                        // this.name = '';
-
                     } else {
                         alert("현재 입력한 정보로 등록된 회원이 없습니다.")
                     }

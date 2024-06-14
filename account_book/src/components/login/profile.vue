@@ -61,8 +61,8 @@ export default {
     name: 'Profile',
     data() {
         return {
-            loginID: '',    //login 아이디
-            dataID:'',      //json-server에서 부여한 id
+            loginID: '',    
+            dataID:'',   
             userData: {},
             pw: "",
             name: "",
@@ -72,11 +72,8 @@ export default {
     },
     methods: {
         getUser() {
-            //alert("get user 실행");
             const value = JSON.parse(localStorage.getItem('loginKey'));
             this.loginID = value.user_id;
-            console.log("현재 접속된 계정:", this.loginID);
-
             axios.get(`http://localhost:3001/User?user_id=${this.loginID}`)
                 .then(res => {
                     this.userData = res.data[0];
@@ -99,12 +96,9 @@ export default {
                     name: this.name,
                     email: this.email,
                 };
-
                 axios.put(`http://localhost:3001/User/${this.dataID}`, newUser)
                     .then(res => {
                         this.userData = res.data;
-                        console.log(JSON.stringify(this.userData));
-                        alert("데이터를 저장합니다.");
                     })
                     .catch(err => alert("오류발생 :" + err));
             }

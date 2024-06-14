@@ -23,10 +23,7 @@ export default {
     },
 
     mounted() {
-
-        console.log("id:" + this.$route.params.id);
         this.id = this.$route.params.id;
-
         this.checkloginStatus();
     },
 
@@ -35,7 +32,6 @@ export default {
             const value = localStorage.getItem('loginKey');
             if (value) {
                 console.log('LocalStorage에 값이 있습니다:', value);
-                //this.$router.push('/main');
             } else {
                 console.log('LocalStorage에 값이 없습니다.');
                 this.$router.push('/');
@@ -93,6 +89,3 @@ export default {
     z-index: 4;
 }
 </style>
-
-
-noticeView.vue

@@ -15,7 +15,6 @@ export default {
             asideOpen: false
         }
     },
-
     mounted(){
         this.checkloginStatus();
     },

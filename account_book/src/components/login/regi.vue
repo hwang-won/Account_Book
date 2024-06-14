@@ -5,7 +5,7 @@
     <div class="loginBox">
         <h1>회원가입</h1>
         <table class="loginTable">
-            <tr class="idTr">
+            <tr>
                 <td class="idTd1">
                     <input type="text" v-model="id" placeholder="아이디" size="20" />
                 </td>
@@ -54,31 +54,19 @@ export default {
     },
     methods: {
         idcheck() {
-            //alert('id호출')
             axios.get(`http://localhost:3001/User?user_id=${this.id}`)
                 .then((res) => {
-
-
-                    // console.log("idcheck실행")
-                    // console.log(JSON.stringify(res.data))
-
                     if (res.data.length > 0) {
-                        // user_id가 중복되는 경우
-                        alert("중복입니다")
-                        // this.message = "중복";
+                        alert("중복입니다");
                         this.id = "";
                     } else {
                         alert("사용할 수 있는 아이디 입니다.")
-                        // 사용할 수 있는 id
-                        // this.message = "사용할 수 있는 id"
                     }
 
                 })
                 .catch(err => alert(err));
         },
         addUser() {
-            //console.log("addUser실행")
-
             if (!this.id || !this.pw || !this.name || !this.email) {
                 alert("모든 값을 입력해주세요.");
                 return;
@@ -89,16 +77,9 @@ export default {
             };
             axios.post("http://localhost:3001/User", newUser)
                 .then(res => {
-                    console.log("user 추가 완료")
-
                     this.form_init();
-
                     alert("회원가입 완료")
-                    // 로그인 페이지 이동
                     this.$router.push('/');
-
-
-
                 })
                 .catch(err => alert(err));
         },
@@ -118,8 +99,6 @@ export default {
 h1 {
     padding-top: 60px;
 }
-
-.idTr {}
 
 .idTd1 input {
     float: right;

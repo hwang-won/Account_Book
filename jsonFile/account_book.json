@@ -4,39 +4,8 @@
       "user_id": "user_1",
       "password": "password",
       "name": "사용자2",
-      "email": "user123@gmail.com",
+      "email": "user1@gmail.com",
       "id": "cb7b"
-    },
-    {
-      "user_id": "123",
-      "password": "123",
-      "name": "123",
-      "email": "123",
-      "id": "194c"
-    },
-    {
-      "id": "c7bd",
-      "user_id": "1234",
-      "password": "1234",
-      "name": "1234",
-      "email": "1234",
-      "account": "1234"
-    },
-    {
-      "id": "77df",
-      "user_id": "12345",
-      "password": "12345",
-      "name": "12345",
-      "email": "12345",
-      "account": "12345"
-    },
-    {
-      "id": "3136",
-      "user_id": "11111",
-      "password": "11111",
-      "name": "11111",
-      "email": "11111",
-      "account": "11111"
     }
   ],
   "Plus": [
@@ -120,6 +89,15 @@
       "update_date": "2024-12-28T09:50",
       "category": "보너스",
       "memo": "연말 보너스"
+    },
+    {
+      "id": "1718350004317",
+      "user_id": "user_1",
+      "money": 30000,
+      "create_date": "2024-06-11T16:26",
+      "update_date": "2024-06-11T16:26",
+      "category": "용돈",
+      "memo": "몰라"
     }
   ],
   "Minus": [
@@ -133,30 +111,12 @@
       "memo": "전기세 많이 나왔으니 절약"
     },
     {
-      "money": 0,
-      "category": "",
-      "memo": "",
-      "create_date": "2024-03-25 18:30",
-      "update_date": "2024-06-14T01:21:23.361Z",
-      "id": "2"
-    },
-    {
-      "id": "3",
-      "user_id": "user_1",
-      "money": 2000,
-      "create_date": "2024-06-14T11:20",
-      "update_date": "2024-06-14T11:20",
-      "category": "의료비",
-      "memo": "의료 검진 비용"
-    },
-    {
-      "id": "4",
-      "user_id": "user_1",
-      "money": 10000,
-      "create_date": "2024-09-03T14:40",
-      "update_date": "2024-09-03T14:40",
-      "category": "수리비",
-      "memo": "차량 수리 비용"
+      "money": 40000,
+      "category": "몰라",
+      "memo": "몰라",
+      "create_date": "2024-09-03 14:40",
+      "update_date": "2024-06-14T07:27:25.359Z",
+      "id": "4"
     }
   ],
   "Notice": [

@@ -5,7 +5,6 @@
     <div class="loginBox">
         <h1>아이디 찾기</h1>
         <br>
-        <!--입력 폼 -->
         <table border="1" class="loginTable">
             <tr>
                 <td>
@@ -61,14 +60,6 @@ export default {
                     if (serverData.name === this.name && serverData.email === this.email) {
                         this.resultID = serverData.user_id
                         alert("아이디 찾기 성공! 회원님의 아이디는 : " + this.resultID + " 입니다" );
-                        console.log("회원님의 ID:",this.resultID);
-                        //alert(serverData.user_id + "님 환영합니다");
-
-                        // this.email = '';
-                        // this.name = '';
-
-
-
                         
                     } else {
                         alert("현재 입력한 정보로 등록된 회원이 없습니다.")
