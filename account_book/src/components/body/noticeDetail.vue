@@ -48,7 +48,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .wrap {
     width: 800px; /* 너비를 줄이기 위해 800px로 변경 */
     margin: 0 auto;

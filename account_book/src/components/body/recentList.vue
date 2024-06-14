@@ -102,6 +102,7 @@ export default {
             transaction.jsonType = type;
             this.contents.unshift(transaction);
             this.sortDate();
+            this.$emit('recent-add-transaction', { type, transaction });
         }
     }
 };
