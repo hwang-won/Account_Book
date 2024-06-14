@@ -197,7 +197,6 @@ table {
     border-radius: 5px;
     box-shadow:  0 0 0 1px #e0e0e0;
     border-style: hidden;  
-    text-align: le;
 
 }
 th, td {

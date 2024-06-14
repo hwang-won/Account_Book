@@ -1,6 +1,5 @@
 <template>
     <div class="recent-container">
-        <h1>Recent List</h1>
         <!-- 테이블 -->
         <div>
             <table>
@@ -114,6 +113,7 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top: 50px;
 }
 table {
     width:1100px;

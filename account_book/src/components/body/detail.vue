@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <div class="wrap">
         <div>
-            <table style="width: 500px;" border="1">
+            <table border="1">
                 <tr>
                     <td>회원명</td>
                     <td>{{ user_id }}</td>
@@ -34,7 +34,7 @@
                 </tr>
             </table>
         </div>
-        <div>
+        <div class="btnBox">
             <div v-if="isUpdate==false">
                 <button @click="startUpdate">수정</button>
             </div>
@@ -155,6 +155,58 @@ export default {
 }
 </script>
 
-<style>
-    
+<style scoped>
+.wrap {
+    width: 1000px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: rgb(252, 250, 241);
+    box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.2);
+}
+table {
+    width: 100%;
+    background-color: white;
+    border-collapse: collapse;
+    border-radius: 5px;
+    box-shadow:  0 0 0 1px #e0e0e0;
+    border-style: hidden;  
+
+}
+th, td {
+    border: 1px solid #cfcfcf;
+    padding: 20px 0 20px 0;
+    border-right: none;
+    border-left: none;
+}
+
+th {
+    background-color: #ebebeb;
+}
+tr:hover {
+    background-color: #ebebeb;
+    cursor: pointer;
+}
+input[type=text] {
+    width: 200px;
+    padding: 10px;
+    font-size: 12px;
+    border-radius: 5px;
+    margin: 0;
+    box-sizing: border-box;
+    border: 1px solid rgb(173, 173, 173);
+}
+input[type=text]:focus {
+    outline: none;
+    border: 1px solid black;
+}
+.btnBox {
+    display: flex;
+    justify-content: center;
+}
+button {
+    background-color: rgb(255, 204, 0);
+    margin: 20px 20px 0 20px;
+    color: rgb(65, 65, 65);
+    font-weight: 600;
+}
 </style>
